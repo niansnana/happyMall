@@ -1,3 +1,3 @@
-# happMail（开心购APP）
+# happMall（开心购APP）
 
 又开始了

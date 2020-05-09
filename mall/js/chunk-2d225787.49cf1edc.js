@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d225787"],{e512:function(t,n,e){"use strict";e.r(n);var i=function(){var t=this,n=t.$createElement,e=t._self._c||n;return e("div",[e("router-link",{attrs:{to:"/home"}},[t._v("返回")]),e("p",[t._v("这是商品详情介绍")]),e("p",[t._v("此商品id："+t._s(t.id))])],1)},r=[],u={data:function(){return{id:""}},created:function(){this.id=this.$route.params.id}},a=u,o=e("2877"),s=Object(o["a"])(a,i,r,!1,null,null,null);n["default"]=s.exports}}]);
+//# sourceMappingURL=chunk-2d225787.49cf1edc.js.map

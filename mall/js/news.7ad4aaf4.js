@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["news"],{2536:function(n,e,t){"use strict";t.r(e);var l=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v("消息页面")])},s=[],u=t("2877"),c={},r=Object(u["a"])(c,l,s,!1,null,null,null);e["default"]=r.exports}}]);
+//# sourceMappingURL=news.7ad4aaf4.js.map

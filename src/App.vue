@@ -7,7 +7,7 @@
 <template>
   <div id="app">
     <router-view />
-    <van-tabbar v-model="active">
+    <van-tabbar v-show="bottomNav" v-model="active">
       <van-tabbar-item
         v-for="(item, index) in navData"
         :key="index"
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -32,6 +33,11 @@ export default {
         { title: '我的', name: 'profile', icon: 'manager-o', badge: '', path: '/profile' }
       ]
     }
+  },
+  computed: {
+    ...mapGetters([
+      'bottomNav'
+    ])
   }
 }
 </script>

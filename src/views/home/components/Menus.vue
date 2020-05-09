@@ -6,7 +6,7 @@
 -->
 <template>
   <div id="gridMenu">
-    <van-grid :gutter="10" :border="false" :column-num="8" icon-size="20px">
+    <van-grid :gutter="10" :border="false" :column-num="4">
       <van-grid-item v-for="(menu, index) in menus" :key="index">
         <van-image :src="menu.thum" />
         <p>{{menu.title}}</p>
@@ -26,7 +26,7 @@ export default {
         { title: '饿了么', thum: 'https://gw.alicdn.com/tfs/TB1DaMyVpzqK1RjSZFoXXbfcXXa-185-144.png?getAvatar=1', path: '#' },
         { title: '天猫超市', thum: 'https://gw.alicdn.com/tfs/TB1FucwVwHqK1RjSZFgXXa7JXXa-183-144.png?getAvatar=1', path: '#' },
         { title: '充值中心', thum: 'https://gw.alicdn.com/tfs/TB1llI3f4n1gK0jSZKPXXXvUXXa-183-144.png?getAvatar=1', path: '#' },
-        { title: '机票酒店', thum: 'https://gw.alicdn.com/tfs/TB1llI3f4n1gK0jSZKPXXXvUXXa-183-144.png?getAvatar=1', path: '#' },
+        { title: '机票酒店', thum: 'https://gw.alicdn.com/tfs/TB1O_AyVwHqK1RjSZFPXXcwapXa-183-144.png?getAvatar=1', path: '#' },
         { title: '淘宝吃货', thum: 'https://gw.alicdn.com/tfs/TB19dcwVyrpK1RjSZFhXXXSdXXa-183-144.png?getAvatar=1', path: '#' }
       ]
     }
@@ -39,13 +39,15 @@ export default {
   background-color #fff
   padding-bottom 15px
   .van-grid-item
-    white-space nowrap
     cursor pointer
     >>> .van-grid-item__content
-      padding-bottom 0
+      padding-bottom 10px
+      box-sizing border-box
     >>> .van-image
       width 61px
       height 48px
     p
       margin 0
+      font-size 14px
+      white-space nowrap
 </style>

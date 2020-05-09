@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["profile"],{"385a":function(e,n,t){"use strict";t.r(n);var l=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[e._v("个人主页")])},r=[],u=t("2877"),a={},c=Object(u["a"])(a,l,r,!1,null,null,null);n["default"]=c.exports}}]);
+//# sourceMappingURL=profile.cae66d3f.js.map

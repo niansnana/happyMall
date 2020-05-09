@@ -19,7 +19,7 @@
             {{sort.title}}
           </template>
           <van-grid :gutter="8" :border="false" :column-num="2">
-            <van-grid-item v-for="(item, i) in sort.content" :key="i" :to="'/detail/' + item.id">
+            <van-grid-item v-for="(item, i) in sort.content" :key="i" @click="getDetail(item.id)">
               <van-image :src="item.thum" />
               <span>{{item.title}}</span>
               <p>
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -117,6 +118,17 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    ...mapMutations({
+      setBottomNav: 'SET_BOTTOM_NAV'
+    }),
+    getDetail (id) {
+      this.$router.push({
+        path: `/detail/${id}`
+      })
+      this.setBottomNav(false)
+    }
   }
 }
 </script>
@@ -132,14 +144,16 @@ export default {
     margin-top 5px
     >>> .van-grid-item__content
       padding 0
-      >>> .van-image
+      .van-image
         width 100%
         height 100%
       span
+        width 100%
         font-size 14px
         color #333333
         padding 0 8px
         box-sizing border-box
+        text-align left
         margin 5px 0px
       p
         text-align left
