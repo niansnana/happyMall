@@ -7,37 +7,13 @@
 <template>
   <div id="app">
     <router-view />
-    <van-tabbar v-show="bottomNav" v-model="active">
-      <van-tabbar-item
-        v-for="(item, index) in navData"
-        :key="index"
-        :icon="item.icon"
-        :badge="item.badge"
-        replace
-        :to="item.path"
-      >{{item.title}}</van-tabbar-item>
-    </van-tabbar>
+    <bottomNav />
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import bottomNav from '@/components/bottomNav/Index'
 export default {
-  data () {
-    return {
-      active: 'home',
-      navData: [
-        { title: '首页', name: 'home', icon: 'home-o', badge: '', path: '/home' },
-        { title: '消息', name: 'news', icon: 'chat-o', badge: '10', path: '/news' },
-        { title: '购物车', name: 'cart', icon: 'apps-o', badge: '20', path: '/cart' },
-        { title: '我的', name: 'profile', icon: 'manager-o', badge: '', path: '/profile' }
-      ]
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'bottomNav'
-    ])
-  }
+  components: { bottomNav }
 }
 </script>

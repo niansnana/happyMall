@@ -74,6 +74,7 @@ export default {
         font-weight 700
         line-height 22px
         font-size 20px
+        white-space nowrap
       &:nth-child(2)
         padding-top 15px
         text-align right

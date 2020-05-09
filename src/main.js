@@ -5,6 +5,8 @@ import store from './store'
 
 // 引入vant
 import '@/plugin/vant.js'
+// 移动端响应式，像素自动转换
+import 'lib-flexible'
 
 Vue.config.productionTip = false
 
