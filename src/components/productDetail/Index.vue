@@ -14,6 +14,8 @@
     <ProductComment />
     <!-- 商品详情介绍 -->
     <ProductDetail />
+    <!-- 商品导航 -->
+    <ProductNav />
   </div>
 </template>
 
@@ -22,8 +24,14 @@ import ProductSwipe from './components/ProductSwipe'
 import ProductInfo from './components/ProductInfo'
 import ProductComment from './components/ProductComment'
 import ProductDetail from './components/ProductDetail'
+import ProductNav from './components/ProductNav'
 export default {
-  components: { ProductSwipe, ProductInfo, ProductComment, ProductDetail }
+  components: { ProductSwipe, ProductInfo, ProductComment, ProductDetail, ProductNav },
+  data () {
+    return {
+      showspecification: false
+    }
+  }
 }
 </script>
 

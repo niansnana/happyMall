@@ -80,4 +80,6 @@
           color #ff7314
   .van-divider
     margin 10px 0px
+  .van-image
+    width 100%
 </style>

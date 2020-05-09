@@ -34,6 +34,8 @@ import {
   Grid,
   GridItem,
   GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton,
   Icon,
   Image,
   ImagePreview,
@@ -111,6 +113,8 @@ Vue.use(Form)
 Vue.use(Grid)
 Vue.use(GridItem)
 Vue.use(GoodsAction)
+Vue.use(GoodsActionIcon)
+Vue.use(GoodsActionButton)
 Vue.use(Icon)
 Vue.use(Image)
 Vue.use(ImagePreview)

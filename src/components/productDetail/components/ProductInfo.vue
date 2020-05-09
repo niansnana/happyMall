@@ -80,7 +80,11 @@
       @add-cart="onAddCartClicked"
     />
     <!-- 参数-弹出框 -->
-    <van-action-sheet class="serviceActionSheet parameterActionSheet" v-model="showParameter" title="产品参数">
+    <van-action-sheet
+      class="serviceActionSheet parameterActionSheet"
+      v-model="showParameter"
+      title="产品参数"
+    >
       <ul>
         <li v-for="(parameter, index) in ParameterData" :key="index">
           <span>{{parameter.title}}</span>
@@ -95,6 +99,7 @@
 </template>
 
 <script>
+import bus from '@/utils/bus'
 export default {
   data () {
     return {
@@ -156,6 +161,11 @@ export default {
         { title: '包装体积', name: '0.88' }
       ]
     }
+  },
+  mounted () {
+    bus.$on('changeSpecificationStatus', value => {
+      this.showspecification = value
+    })
   },
   methods: {
     onBuyClicked () {
