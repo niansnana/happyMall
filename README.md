@@ -1,4 +1,6 @@
-# happMall（开心购APP）
+<p align="center">![DIDIGO](http://image.niansnana.com/20200510110040.png)</p>
+
+## happMall（开心购APP）
 
 ![Build Status](https://travis-ci.org/hrscy/TodayNews.svg?branch=master) ![Objective-C](https://img.shields.io/badge/language-Objective-C.svg)
 

@@ -14,7 +14,7 @@
       </van-col>
       <van-col span="6">管理</van-col>
     </van-row>
-    <div class="header" :style="opacityStyle" v-show="showNav">景点详情</div>
+    <div class="header" :style="opacityStyle" v-show="showNav">购物车</div>
     <!-- 购物车 -->
     <CartList class="list" />
     <!-- 提交订单 -->
@@ -86,4 +86,8 @@ export default {
     top 0
     left 0
     z-index 10000
+    text-align center
+    line-height 50px
+    color #fff
+    font-size 20px
 </style>

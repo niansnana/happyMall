@@ -10,7 +10,7 @@
       <van-checkbox v-model="checked" @click="allChecked">全选</van-checkbox>
       <template #tip>
         你的收货地址不支持同城送,
-        <span @click="onClickEditAddress">修改地址{{totalPrice}}</span>
+        <span @click="onClickEditAddress">修改地址</span>
       </template>
     </van-submit-bar>
   </div>
@@ -18,7 +18,7 @@
 
 <script>
 import bus from '@/utils/bus'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -31,8 +31,18 @@ export default {
     ])
   },
   methods: {
+    ...mapActions([
+      'changeTotalPrice'
+    ]),
     // 全选
     allChecked () {
+      if (this.checked === false) {
+        this.changeTotalPrice({
+          num: 0,
+          isChecked: this.checked,
+          price: 0
+        })
+      }
       bus.$emit('allChecked', this.checked)
     },
     onSubmit () {

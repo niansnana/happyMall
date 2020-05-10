@@ -13,9 +13,9 @@
           <van-checkbox v-model="list.isChecked" :name="list.id" shape="square" />
           <van-card :price="list.price" desc="描述信息" :title="list.goodsName" :thumb="list.thumb" />
         </div>
-        <van-field name="stepper" @click="singerPrice(list.num, list.price)">
+        <van-field name="stepper">
           <template #input>
-            <van-stepper v-model="list.num" />
+            <van-stepper v-model="list.num" @plus="addNum(list.num)" @minus="subNum(list.num)" />
           </template>
         </van-field>
         <template #right>
@@ -29,7 +29,7 @@
 
 <script>
 import bus from '@/utils/bus'
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -74,7 +74,9 @@ export default {
           thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg_190x190q90_.webp',
           isChecked: false
         }
-      ]
+      ],
+      totalNum: 0,
+      totalPrice: 0
     }
   },
   mounted () {
@@ -84,15 +86,37 @@ export default {
       }
     })
   },
+  watch: {
+    listData: {
+      handler (curval, oldval) {
+        // 计算总价
+        this.totalNum = this.totalPrice = 0
+        curval.forEach(item => {
+          this.totalNum += item.num
+          this.totalPrice += (item.num * item.price) * 100
+          // console.log('最后的订单数：', this.totalNum)
+          // console.log('最后的成交价：', this.totalPrice)
+          if (item.isChecked === true) {
+            this.changeTotalPrice({
+              num: this.totalNum,
+              isChecked: item.isChecked,
+              price: this.totalPrice
+            })
+          }
+        })
+      },
+      deep: true
+    }
+  },
   methods: {
-    ...mapMutations({
-      setTotalPrice: 'SET_TOTAL_PRICE'
-    }),
-    // 单个商品价格
-    singerPrice (num, price) {
-      // 总价单位是分，故相乘100
-      const last = (num * price) * 100
-      this.setTotalPrice(last)
+    ...mapActions([
+      'changeTotalPrice'
+    ]),
+    addNum (num) {
+      num++
+    },
+    subNum (num) {
+      num--
     }
   }
 }
@@ -101,7 +125,7 @@ export default {
 <style lang="stylus" scoped>
 #cartList
   width 100%
-  margin-top -10%
+  margin-top -5vh
   .van-list
     margin 0 auto
     padding 10px 15px
