@@ -18,6 +18,9 @@ const mutations = {
   },
   [types.SET_CHECKED] (state, flag) {
     state.isChecked = flag
+  },
+  [types.SET_SHOPPING_CART] (state, paylod) {
+    state.shoppingCart = paylod
   }
 }
 

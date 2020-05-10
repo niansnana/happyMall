@@ -11,8 +11,8 @@
       <div class="store_top">
         <div class="top_left">
           <van-image
-            width="4rem"
-            height="4rem"
+            width="50px"
+            height="50px"
             src="https://img.alicdn.com/imgextra//21/bc/T1fl0mXaXvXXb1upjX.jpg_100x100q90_.webp"
           />
           <p class="pofletf">

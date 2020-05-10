@@ -12,15 +12,15 @@
         <div class="user_comm">
           <div class="user_info">
             <van-image
-              width="1.5rem"
-              height="1.5rem"
+              width="30px"
+              height="30px"
               fit="contain"
               round
               src="https://wwc.alicdn.com/avatar/getAvatar.do?userIdStr=vGNuOHcWv88YXF-HPmvbM0gSMF*IMH8WvHlzX8QSM8Z-PGPIPG-zPm8bv8kbv0*I&width=40&height=40&type=sns"
             />
             <span>测试人员9627</span>
           </div>
-          <p>虽然登了近2个月，但到货相当满意的</p>
+          <p>虽然等了近2个月，但到货相当满意的</p>
         </div>
       </van-list>
       <van-list>

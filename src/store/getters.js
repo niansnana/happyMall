@@ -8,3 +8,4 @@ export const bottomNav = state => state.bottomNav
 export const totalPrice = state => state.totalPrice
 export const totalNum = state => state.totalNum
 export const isChecked = state => state.isChecked
+export const shoppingCart = state => state.shoppingCart

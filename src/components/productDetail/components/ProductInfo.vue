@@ -70,15 +70,21 @@
     <!-- 规格-弹出框 -->
     <van-sku
       v-model="showspecification"
+      stepper-title="数量"
       :sku="sku"
       :goods="goods"
       :goods-id="goodsId"
       :quota="quota"
       :quota-used="quotaUsed"
       :hide-stock="sku.hide_stock"
-      @buy-clicked="onBuyClicked"
-      @add-cart="onAddCartClicked"
-    />
+    >
+      <!-- 自定义 sku actions -->
+      <template #sku-actions>
+        <div class="van-sku-actions">
+          <van-button square size="large" type="warning" @click="onPointClicked">确定</van-button>
+        </div>
+      </template>
+    </van-sku>
     <!-- 参数-弹出框 -->
     <van-action-sheet
       class="serviceActionSheet parameterActionSheet"
@@ -110,27 +116,75 @@ export default {
       quota: 10, // 限购数,
       quotaUsed: 1, // 已经购买的数量
       sku: {
-        // 数据结构见下方文档
-        hide_stock: true, // 是否显示商品剩余库存
+        hide_stock: false, // 是否隐藏商品剩余库存
         price: '1.00', // 默认价格（单位元）
+        // 参数列表
         tree: [
           {
             k: '颜色', // skuKeyName：规格类目名称
             v: [
               {
-                id: '30349', // skuValueId：规格值 id
+                id: '1215', // skuValueId：规格值 id
                 name: '黑色', // skuValueName：规格值名称
                 imgUrl: 'http://img.alicdn.com/imgextra/i3/12844594/O1CN01uaj2911jo65Mb35fy_!!12844594.jpg_120x120q50s150.jpg', // 规格类目图片，只有第一个规格类目可以定义图片
-                previewImgUrl: 'https://img.yzcdn.cn/1p.jpg' // 用于预览显示的规格类目图片
+                previewImgUrl: 'http://img.alicdn.com/imgextra/i3/12844594/O1CN01uaj2911jo65Mb35fy_!!12844594.jpg_120x120q50s150.jpg' // 用于预览显示的规格类目图片
               },
               {
-                id: '1215',
+                id: '1193',
                 name: '红色',
-                imgUrl: 'https://img.yzcdn.cn/2.jpg',
-                previewImgUrl: 'https://img.yzcdn.cn/2p.jpg'
+                imgUrl: 'https://gw.alicdn.com/bao/uploaded/i3/3966181746/O1CN011GWIdu1Oli5nI0OUA_!!3966181746.jpg_200x200Q50s50.jpg',
+                previewImgUrl: 'https://gw.alicdn.com/bao/uploaded/i3/3966181746/O1CN011GWIdu1Oli5nI0OUA_!!3966181746.jpg_200x200Q50s50.jpg'
               }
             ],
-            k_s: 's1' // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
+            k_s: 's2' // list参数列表
+          },
+          {
+            k: '尺寸',
+            v: [
+              {
+                id: '110',
+                name: 'M'
+              },
+              {
+                id: '111',
+                name: 'S'
+              },
+              {
+                id: '112',
+                name: 'L'
+              }
+            ],
+            k_s: 's1'
+          }
+        ],
+        list: [
+          {
+            id: 2259, // skuId，下单时后端需要
+            price: 100, // 价格（单位分）
+            s1: '1215', // 规格类目 k_s 为 s1 的对应规格值 id
+            s2: '1193', // 规格类目 k_s 为 s2 的对应规格值 id
+            stock_num: 110 // 当前 sku 组合对应的库存
+          },
+          {
+            id: 2260, // skuId，下单时后端需要
+            price: 50, // 价格（单位分）
+            s1: '110',
+            s2: '111',
+            s3: '112'
+          }
+        ],
+        stock_num: 227, // 商品总库存
+        collection_id: 2261, // 无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id
+        none_sku: false, // 是否无规格商品
+        messages: [
+          {
+            // 商品留言
+            datetime: '0', // 留言类型为 time 时，是否含日期。'1' 表示包含
+            multiple: '0', // 留言类型为 text 时，是否多行文本。'1' 表示多行
+            name: '留言', // 留言名称
+            type: 'text', // 留言类型，可选: id_no（身份证）, text, tel, date, time, email
+            required: '1', // 是否必填 '1' 表示必填
+            placeholder: '拜托拜托很想要，赶紧上架吧' // 可选值，占位文本
           }
         ]
       },
@@ -168,11 +222,9 @@ export default {
     })
   },
   methods: {
-    onBuyClicked () {
-      console.log('购买成功')
-    },
-    onAddCartClicked () {
-      console.log('添加购物车成功')
+    onPointClicked () {
+      this.$toast.success('添加成功！')
+      this.showspecification = false
     }
   }
 }

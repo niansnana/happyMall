@@ -31,7 +31,12 @@ const routes = [
   // 商品详情页
   {
     path: '/detail/:id',
-    component: () => import('@/components/productDetail/Index')
+    component: () => import(/* webpackChunkName: "pay" */ '@/components/productDetail/Index')
+  },
+  // 商品支付页
+  {
+    path: '/pay/:id',
+    component: () => import(/* webpackChunkName: "pay" */ '@/components/pay/Index')
   }
 ]
 

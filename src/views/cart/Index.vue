@@ -14,7 +14,10 @@
       </van-col>
       <van-col span="6">管理</van-col>
     </van-row>
-    <div class="header" :style="opacityStyle" v-show="showNav">购物车</div>
+    <!-- <div class="header" :style="opacityStyle" v-show="showNav">购物车</div> -->
+    <ColorNav>
+      <slot>购物车</slot>
+    </ColorNav>
     <!-- 购物车 -->
     <CartList class="list" />
     <!-- 提交订单 -->
@@ -23,37 +26,11 @@
 </template>
 
 <script>
+import ColorNav from '@/components/navBar/ColorNav'
 import CartList from './components/CartList'
 import CartComit from './components/CartComit'
 export default {
-  components: { CartList, CartComit },
-  data () {
-    return {
-      showNav: true,
-      opacityStyle: {
-        opacity: 0
-      }
-    }
-  },
-  created () {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll () {
-      const top = document.documentElement.scrollTop || document.body.scrollTop
-      if (top > 0) {
-        let opacity = top / 200
-        opacity = opacity > 1 ? 1 : opacity
-        this.opacityStyle = { opacity }
-        this.showNav = true
-      } else {
-        this.showNav = false
-      }
-    }
-  }
+  components: { ColorNav, CartList, CartComit }
 }
 </script>
 
@@ -78,16 +55,4 @@ export default {
       &:nth-child(2)
         padding-top 15px
         text-align right
-  .header
-    width 100%
-    height 50px
-    background-image linear-gradient(-90deg, #FF5000 0%, #FF8400 100%)
-    position fixed
-    top 0
-    left 0
-    z-index 10000
-    text-align center
-    line-height 50px
-    color #fff
-    font-size 20px
 </style>
