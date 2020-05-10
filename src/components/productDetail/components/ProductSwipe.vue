@@ -30,8 +30,8 @@ export default {
       id: '',
       current: 0,
       thumData: [
-        { id: '1', thum: 'https://img.alicdn.com/imgextra/i3/12844594/TB2GJ3RduOSBuNjy0FdXXbDnVXa_!!12844594.jpg_640x640q80_.webp' },
-        { id: '2', thum: 'https://img.alicdn.com/imgextra/i4/12844594/O1CN011jo5ypdzUfFzjG7_!!12844594.jpg_640x640q80_.webp' }
+        { id: '1', thum: 'https://img.alicdn.com/imgextra/i3/12844594/TB2GJ3RduOSBuNjy0FdXXbDnVXa_!!12844594.jpg' },
+        { id: '2', thum: 'https://img.alicdn.com/imgextra/i4/12844594/O1CN011jo5ypdzUfFzjG7_!!12844594.jpg' }
       ]
     }
   },

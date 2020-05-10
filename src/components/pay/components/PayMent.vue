@@ -12,7 +12,7 @@
         <van-image
           width="100"
           fit="contain"
-          src="https://img.alicdn.com/bao/uploaded/i2/2200787329732/O1CN01FDS4S32LlJ6tbHpmh_!!0-item_pic.jpg_190x190q90_.webp"
+          src="https://img.alicdn.com/bao/uploaded/i2/2200787329732/O1CN01FDS4S32LlJ6tbHpmh_!!0-item_pic.jpg"
         />
         <p>
           零食大礼包一箱整小吃休闲食品女小充饥夜宵儿童散装自选薯片网红

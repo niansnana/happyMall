@@ -17,9 +17,9 @@ export default {
   data () {
     return {
       imagesData: [
-        'https://img.alicdn.com/tfs/TB1hNYOEVT7gK0jSZFpXXaTkpXa-520-280.jpg_q90_.webp',
+        'https://img.alicdn.com/simba/img/TB1M8s2CWL7gK0jSZFBSutZZpXa.jpg',
         'https://img.alicdn.com/simba/img/TB1FktWFaL7gK0jSZFBSutZZpXa.jpg',
-        'https://img.alicdn.com/tps/i4/TB1CtFgFkL0gK0jSZFtSutQCXXa.jpg_q90_.webp'
+        'https://img.alicdn.com/simba/img/TB1iht1Fxn1gK0jSZKPSutvUXXa.jpg'
       ]
     }
   }

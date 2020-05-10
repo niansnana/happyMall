@@ -34,12 +34,12 @@
     <!-- 商品额外介绍 -->
     <div class="detail">
       <van-divider>详情</van-divider>
-      <van-image src="https://img.alicdn.com/imgextra/i4/12844594/O1CN01DVNcZe1jo65cOGgKo_!!12844594.jpg_640x0q80_.webp" />
-      <van-image src="http://img.alicdn.com/imgextra/i2/12844594/O1CN019wMWfu1jo65avgCjo_!!12844594.jpg_640x0q80_.webp" />
-      <van-image src="https://img.alicdn.com/imgextra/i4/12844594/O1CN014vfJsr1jo65aAwGyV_!!12844594.jpg_640x0q80_.webp" />
-      <van-image src="https://img.alicdn.com/imgextra/i2/12844594/O1CN013G9eE31jo65edpZuE_!!12844594.jpg_640x0q80_.webp" />
-      <van-image src="https://img.alicdn.com/imgextra/i3/12844594/O1CN01CP3nSH1jo65auBUmi_!!12844594.jpg_640x0q80_.webp" />
-      <van-image src="https://img.alicdn.com/imgextra/i2/12844594/O1CN01Zx4QqH1jo65avg4Qk_!!12844594.jpg_640x0q80_.webp" />
+      <van-image src="https://img.alicdn.com/imgextra/i4/12844594/O1CN01DVNcZe1jo65cOGgKo_!!12844594.jpg" />
+      <van-image src="http://img.alicdn.com/imgextra/i2/12844594/O1CN019wMWfu1jo65avgCjo_!!12844594.jpg" />
+      <van-image src="https://img.alicdn.com/imgextra/i4/12844594/O1CN014vfJsr1jo65aAwGyV_!!12844594.jpg" />
+      <van-image src="https://img.alicdn.com/imgextra/i2/12844594/O1CN013G9eE31jo65edpZuE_!!12844594.jpg" />
+      <van-image src="https://img.alicdn.com/imgextra/i3/12844594/O1CN01CP3nSH1jo65auBUmi_!!12844594.jpg" />
+      <van-image src="https://img.alicdn.com/imgextra/i2/12844594/O1CN01Zx4QqH1jo65avg4Qk_!!12844594.jpg" />
       <van-image src="https://gw.alicdn.com/tfs/TB1d0h2qVYqK1RjSZLeXXbXppXa-1125-960.png?getAvatar=avatar" />
     </div>
   </div>

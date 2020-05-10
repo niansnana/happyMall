@@ -28,6 +28,26 @@ const routes = [
     path: '/profile',
     component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Index')
   },
+  // 商城用户页面
+  {
+    path: '/profile',
+    component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Index')
+  },
+  // 用户设置页面
+  {
+    path: '/setting',
+    component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Setting')
+  },
+  // 用户信息修改页面
+  {
+    path: '/editinfo',
+    component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/EditInfo')
+  },
+  // 用户收货地址页面
+  {
+    path: '/address',
+    component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/AddressList')
+  },
   // 商品详情页
   {
     path: '/detail/:id',

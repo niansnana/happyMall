@@ -41,7 +41,7 @@ export default {
           value: '领券',
           price: '2.00',
           goodsName: '2020夏装韩版宽松bf风百搭简约字母半袖ins潮短袖T恤女学生装上衣',
-          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg_190x190q90_.webp',
+          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg',
           isChecked: false
         },
         {
@@ -51,7 +51,7 @@ export default {
           value: '领券',
           price: '3.00',
           goodsName: '2020夏装韩版宽松bf风百搭简约字母半袖ins潮短袖T恤女学生装上衣',
-          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg_190x190q90_.webp',
+          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg',
           isChecked: false
         },
         {
@@ -61,7 +61,7 @@ export default {
           value: '领券',
           price: '10.00',
           goodsName: '2020夏装韩版宽松bf风百搭简约字母半袖ins潮短袖T恤女学生装上衣',
-          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg_190x190q90_.webp',
+          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg',
           isChecked: false
         },
         {
@@ -71,7 +71,7 @@ export default {
           value: '领券',
           price: '1.00',
           goodsName: '2020夏装韩版宽松bf风百搭简约字母半袖ins潮短袖T恤女学生装上衣',
-          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg_190x190q90_.webp',
+          thumb: 'https://img.alicdn.com/bao/uploaded/i4/3938319326/O1CN01d5cwbE2IlMESjxZf5_!!3938319326.jpg',
           isChecked: false
         }
       ],

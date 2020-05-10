@@ -63,6 +63,7 @@ import {
   Search,
   Sku,
   Skeleton,
+  ShareSheet,
   Slider,
   Step,
   Stepper,
@@ -144,6 +145,7 @@ Vue.use(Row)
 Vue.use(Search)
 Vue.use(Sku)
 Vue.use(Skeleton)
+Vue.use(ShareSheet)
 Vue.use(Slider)
 Vue.use(Step)
 Vue.use(Stepper)
