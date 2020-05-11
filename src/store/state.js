@@ -9,7 +9,8 @@ const state = {
   totalNum: 0, // 购物车购买的总数
   isChecked: false, // 购物车商品默认未选中
   totalPrice: 0, // 购物车最终所需要支付的金额,
-  shoppingCart: [] // 存储的购物车数组
+  shoppingCart: [], // 存储的购物车数组,
+  token: '' // 登录验证
 }
 
 export default state

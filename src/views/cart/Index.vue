@@ -19,9 +19,10 @@
       <slot>购物车</slot>
     </ColorNav>
     <!-- 购物车 -->
-    <CartList class="list" />
+    <CartList v-show="token" class="list" />
     <!-- 提交订单 -->
-    <CartComit />
+    <CartComit v-show="token" />
+    <Index />
   </div>
 </template>
 
@@ -29,8 +30,15 @@
 import ColorNav from '@/components/navBar/ColorNav'
 import CartList from './components/CartList'
 import CartComit from './components/CartComit'
+import Index from 'components/notLogged/Index'
+import { mapGetters } from 'vuex'
 export default {
-  components: { ColorNav, CartList, CartComit }
+  components: { ColorNav, CartList, CartComit, Index },
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
+  }
 }
 </script>
 

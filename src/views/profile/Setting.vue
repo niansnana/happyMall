@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 头部 -->
-    <NavBar @click="changeNavBottom">
+    <NavBar>
       <slot>设置</slot>
     </NavBar>
     <van-card

@@ -1,4 +1,4 @@
-<p align="center"><img src="http://image.niansnana.com/20200510110040.png" alt="DIDIGO"></p>
+<p align="center"><img src="http://image.niansnana.com/20200511104737.png" alt="DIDIGO"></p>
 
 ## happMall（开心购APP）
 

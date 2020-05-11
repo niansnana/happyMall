@@ -8,6 +8,7 @@
     </van-nav-bar>
     <!-- 搜索 -->
     <van-search v-model="serValue" placeholder="搜索" />
+    <Index />
     <!-- 消息列表 -->
     <van-card
       :desc="item.content"
@@ -15,6 +16,7 @@
       :thumb="item.portrait"
       v-for="(item, index) in messageList"
       :key="index"
+      v-show="token"
     >
       <template #tags>
         <van-tag type="danger">{{ item.unread }}</van-tag>
@@ -24,7 +26,10 @@
 </template>
 
 <script>
+import Index from 'components/notLogged/Index'
+import { mapGetters } from 'vuex'
 export default {
+  components: { Index },
   data () {
     return {
       serValue: '',
@@ -34,6 +39,11 @@ export default {
         { nickname: '彩色的羽毛', content: '好的亲', portrait: 'https://pic2.zhimg.com/80/v2-f50307a56f235eeb59424bec25e4cec9_720w.jpg', unread: 3 }
       ]
     }
+  },
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
   }
 }
 </script>

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <!-- 头部 -->
-    <van-nav-bar title="个人中心">
-      <template #right>
-        <van-icon name="setting-o" size="18" color="#0f0f0f" @click="toSetting" />
-      </template>
-    </van-nav-bar>
-    <div class="userInfo">
+    <ColorNav>
+      <slot>个人中心</slot>
+    </ColorNav>
+    <div class="no_login" v-show="!token">
+      <van-button type="default" @click="login">立即登录</van-button>
+    </div>
+    <div class="userInfo" v-show="token">
       <div class="inner">
-        <div class="portrait">
+        <div class="portrait" @click="toSetting">
           <img src="https://pic2.zhimg.com/80/v2-3f71bc3a7c067ccca02edeadc0059936_720w.jpg" />
         </div>
         <div class="nickname">
@@ -30,14 +30,18 @@
     <van-cell title="领券中心" is-link />
     <van-cell title="我的客服" is-link />
     <van-cell title="关于本APP" is-link />
+    <van-cell title="设置" is-link @click="toSetting" />
     <van-cell title="分享给好友" @click="showShare = true" is-link />
     <van-share-sheet v-model="showShare" title="立即分享给好友" :options="options" @select="onSelect" />
+    <van-cell title="退出登录" v-show="token" is-link @click="logout" />
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import ColorNav from '@/components/navBar/ColorNav'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
+  components: { ColorNav },
   data () {
     return {
       active: -1,
@@ -54,9 +58,15 @@ export default {
   created () {
     this.setBottomNav(true)
   },
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
+  },
   methods: {
     ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
+      setBottomNav: 'SET_BOTTOM_NAV',
+      setToken: 'SET_TOKEN'
     }),
     onSelect (option) {
       this.$toast(option.name)
@@ -68,12 +78,34 @@ export default {
         path: '/setting'
       })
       this.setBottomNav(false)
+    },
+    login () {
+      this.$router.push({
+        path: '/login'
+      })
+      this.setBottomNav(false)
+    },
+    logout () {
+      this.setToken()
+      this.$router.push({
+        path: '/login'
+      })
+      this.setBottomNav(false)
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+.no_login
+  background-color #fff
+  text-align center
+  font-size 14px
+  margin 15px 0px
+  .van-button
+    width 80%
+    border-radius 20px
+    margin-bottom 15px
 .userInfo
   text-align center
   background-image url('http://ku.90sjimg.com/back_pic/05/03/08/9359565bf290660.jpg%21/watermark/text/OTDorr7orqE=/font/simkai/align/southeast/opacity/20/size/50') // ku.90sjimg.com/back_pic/05/03/08/9359565bf290660.jpg%21/watermark/text/OTDorr7orqE=/font/simkai/align/southeast/opacity/20/size/50)

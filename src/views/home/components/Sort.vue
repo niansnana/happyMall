@@ -78,6 +78,7 @@ export default {
   .van-grid
     margin-top 5px
     >>> .van-grid-item__content
+      border-radius 10px
       padding 0
       .van-image
         width 100%

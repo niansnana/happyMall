@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -57,6 +56,11 @@ const routes = [
   {
     path: '/pay/:id',
     component: () => import(/* webpackChunkName: "pay" */ '@/components/pay/Index')
+  },
+  // 登录
+  {
+    path: '/login',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/Index')
   }
 ]
 

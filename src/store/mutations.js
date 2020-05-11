@@ -21,6 +21,9 @@ const mutations = {
   },
   [types.SET_SHOPPING_CART] (state, paylod) {
     state.shoppingCart = paylod
+  },
+  [types.SET_TOKEN] (state, key) {
+    state.token = key
   }
 }
 

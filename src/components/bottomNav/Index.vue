@@ -6,7 +6,13 @@
 -->
 <template>
   <div class="fix">
-    <van-tabbar v-show="bottomNav" v-model="active">
+    <van-tabbar
+      v-show="bottomNav"
+      v-model="active"
+      @change="onChange"
+      active-color="#ff6200"
+      inactive-color="#000"
+    >
       <van-tabbar-item
         v-for="(item, index) in navData"
         :key="index"
@@ -24,12 +30,12 @@ import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      active: 'home',
+      active: 0,
       navData: [
-        { title: '首页', name: 'home', icon: 'home-o', badge: '', path: '/home' },
-        { title: '消息', name: 'news', icon: 'chat-o', badge: '10', path: '/news' },
-        { title: '购物车', name: 'cart', icon: 'apps-o', badge: '20', path: '/cart' },
-        { title: '我的', name: 'profile', icon: 'manager-o', badge: '', path: '/profile' }
+        { id: 0, title: '首页', icon: 'home-o', badge: '', path: '/home' },
+        { id: 1, title: '消息', icon: 'chat-o', badge: '10', path: '/news' },
+        { id: 2, title: '购物车', icon: 'apps-o', badge: '20', path: '/cart' },
+        { id: 3, title: '我的', icon: 'manager-o', badge: '', path: '/profile' }
       ]
     }
   },
@@ -37,6 +43,11 @@ export default {
     ...mapGetters([
       'bottomNav'
     ])
+  },
+  methods: {
+    onChange (index) {
+      this.active = index
+    }
   }
 }
 </script>
