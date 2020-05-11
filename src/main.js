@@ -11,8 +11,8 @@ import 'lib-flexible'
 // 引入工具函数-置顶问题
 import 'utils/backTop.js'
 // 300 延迟问题
-import FastClick from 'fastclick'
-FastClick.attach(document.body)
+// import FastClick from 'fastclick'
+// FastClick.attach(document.body)
 
 // 配置axios
 axios.defaults.timeout = 30000

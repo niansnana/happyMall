@@ -1,11 +1,8 @@
 <template>
   <div>
-    <ColorNav>
+    <ColorNav v-show="token">
       <slot>个人中心</slot>
     </ColorNav>
-    <div class="no_login" v-show="!token">
-      <van-button type="default" @click="login">立即登录</van-button>
-    </div>
     <div class="userInfo" v-show="token">
       <div class="inner">
         <div class="portrait" @click="toSetting">
@@ -15,6 +12,9 @@
           <span>养你致富hhh</span>
         </div>
       </div>
+    </div>
+    <div class="noLogger" v-show="!token">
+      <van-button type="default" @click="goLogin">立即登录</van-button>
     </div>
     <van-tabbar v-model="active" :fixed="false" inactive-color="orange">
       <van-tabbar-item icon="like">收藏</van-tabbar-item>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ColorNav from '@/components/navBar/ColorNav'
+import ColorNav from 'components/navBar/ColorNav'
 import { mapGetters, mapMutations } from 'vuex'
 export default {
   components: { ColorNav },
@@ -79,7 +79,13 @@ export default {
       })
       this.setBottomNav(false)
     },
-    login () {
+    // toLogin () {
+    //   this.$router.push({
+    //     path: '/login'
+    //   })
+    //   this.setBottomNav(false)
+    // },
+    goLogin () {
       this.$router.push({
         path: '/login'
       })
@@ -97,7 +103,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.no_login
+.noLogger
   background-color #fff
   text-align center
   font-size 14px
