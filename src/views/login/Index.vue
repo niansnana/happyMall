@@ -42,7 +42,7 @@
         >登录</van-button>
       </div>
     </van-form>
-    <p>免费注册</p>
+    <p @click="register">免费注册</p>
   </div>
 </template>
 
@@ -60,6 +60,9 @@ export default {
       passwordType: 'password',
       isShowPass: false
     }
+  },
+  created () {
+    this.setBottomNav(false)
   },
   computed: {
     isLogin () {
@@ -96,6 +99,12 @@ export default {
         this.passwordType = 'password'
       }
       this.isShowPass = !this.isShowPass
+    },
+    register () {
+      this.$router.push({
+        path: '/register'
+      })
+      this.setBottomNav(false)
     }
   }
 }

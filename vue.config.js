@@ -11,6 +11,8 @@ function resolve (dir) {
 }
 
 module.exports = {
+  // 打包相对路径
+  publicPath: '/',
   // 放置静态资源目录
   assetsDir: 'static',
   // 取消 source map
@@ -27,7 +29,6 @@ module.exports = {
   },
   devServer: {
     host: 'localhost',
-    port: 8080,
     https: false,
     //配置跨域
     proxy: {
