@@ -4,7 +4,6 @@
 * @Start_Writing_Date 2020-05-10 13:36:50
 * @Last_Modified_Date 2020-05-10 13:36:50
 */
-const mockGoodsData = require('./mock/goods.json')
 const path = require('path')
 
 function resolve (dir) {
@@ -26,16 +25,28 @@ module.exports = {
       .set('utils', resolve('src/utils'))
       .set('@views', resolve('src/views'))
   },
-  // mock 假想数据
   devServer: {
+    host: 'localhost',
     port: 8080,
-    before (app) {
-      app.get('/api/goods', (req, res) => {
-        res.json({
-          status: 200,
-          data: mockGoodsData
-        })
-      })
+    https: false,
+    //配置跨域
+    proxy: {
+      '/dev': {
+        target: 'http://127.0.0.1:3001',
+        ws: true,
+        changeOrigin: true, // 允许跨域
+        pathRewrite: {
+          '^/dev': ''
+        }
+      },
+      '/prod': {
+        target: 'http://47.102.197.151:3001',
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/prod': ''
+        }
+      }
     }
   }
 }

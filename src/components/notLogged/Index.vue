@@ -16,7 +16,7 @@
     <div class="control">
       <van-button round block type="danger" @click="login">登录</van-button>
       <p>
-        <span>还未注册？</span>
+        <span @click="register">还未注册？</span>
       </p>
     </div>
   </div>
@@ -37,6 +37,12 @@ export default {
     login () {
       this.$router.push({
         path: '/login'
+      })
+      this.setBottomNav(false)
+    },
+    register () {
+      this.$router.push({
+        path: '/register'
       })
       this.setBottomNav(false)
     }

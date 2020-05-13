@@ -59,6 +59,11 @@ const routes = [
   },
   // 登录
   {
+    path: '/register',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/login/Register')
+  },
+  // 登录
+  {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/Index')
   }

@@ -5,13 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vue-cli-service serve --mode development",
+    "dev-build": "vue-cli-service build --mode development",
+    "prod": "vue-cli-service serve --mode production",
+    "prod-build": "vue-cli-service build --mode production"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
-    "fastclick": "^1.0.6",
     "lib-flexible": "^0.3.2",
+    "qs": "^6.9.4",
     "vant": "^2.8.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",

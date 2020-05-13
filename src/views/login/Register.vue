@@ -1,14 +1,12 @@
 <!--
  * @author niansnana
- * @Description 登录
- * @Start_Writing_Date 2020-05-11 09:53:00
- * @Last_Modified_Date 2020-05-11 09:53:00
+ * @Description 注册
+ * @Start_Writing_Date 2020-05-12 15:33:02
+ * @Last_Modified_Date 2020-05-12 15:33:02
 -->
 <template>
   <div>
-    <Nav>
-      <slot>帮助</slot>
-    </Nav>
+    <Nav />
     <div class="logo">
       <van-image width="100" round src="http://image.niansnana.com/20200511104737.png" />
     </div>
@@ -31,6 +29,14 @@
         @click-right-icon="$toast('密码必须是数字、字母、下划线')"
         right-icon="question-o"
       />
+      <van-field
+        v-model="userInfo.phone"
+        clearable
+        type="text"
+        placeholder="请输入手机号"
+        left-icon="phone-o"
+        @click-right-icon="$toast('霸王条约')"
+      />
       <div style="margin: 16px">
         <van-button
           round
@@ -38,11 +44,10 @@
           :type="isLogin"
           :disabled="this.userInfo.userName === '' ? true : false"
           native-type="submit"
-          @click="login(userInfo.userName, userInfo.password)"
-        >登录</van-button>
+          @click="_register(userInfo.userName, userInfo.password, userInfo.phone)"
+        >注册</van-button>
       </div>
     </van-form>
-    <p>免费注册</p>
   </div>
 </template>
 
@@ -55,7 +60,8 @@ export default {
     return {
       userInfo: {
         userName: '',
-        password: ''
+        password: '',
+        phone: ''
       },
       passwordType: 'password',
       isShowPass: false
@@ -63,7 +69,7 @@ export default {
   },
   computed: {
     isLogin () {
-      return this.username === '' ? 'default' : 'danger'
+      return this.userName === '' ? 'default' : 'danger'
     },
     isShowPassword () {
       return this.passwordType === 'password' ? 'closed-eye' : 'eye-o'
@@ -74,20 +80,6 @@ export default {
       setBottomNav: 'SET_BOTTOM_NAV',
       setToken: 'SET_TOKEN'
     }),
-    login () {
-      this.$api.loginFn(this.userInfo).then(res => {
-        if (res.data.code === 200) {
-          const token = new Date().getTime()
-          this.setToken(token)
-          this.$router.push({
-            path: '/home'
-          })
-          this.setBottomNav(true)
-        } else {
-          this.$toast.fail('用户名或密码错误')
-        }
-      })
-    },
     showPass () {
       // eye-o
       if (this.isShowPass === false) {
@@ -96,6 +88,19 @@ export default {
         this.passwordType = 'password'
       }
       this.isShowPass = !this.isShowPass
+    },
+    _register () {
+      this.$api.registerFn(this.userInfo).then(res => {
+        if (res.data.code === 200) {
+          this.$router.push({
+            path: '/login'
+          })
+        } else {
+          this.$toast.fail('格式不合法')
+        }
+      }).catch((err) => {
+        console.log(err)
+      })
     }
   }
 }
@@ -105,11 +110,4 @@ export default {
 .logo
   text-align center
   margin 15px 0px
-p
-  text-align right
-  padding-right 20px
-  color #999
-  cursor pointer
-  &:hover
-    color #ff5000
 </style>
