@@ -35,6 +35,9 @@ const routes = [
   // 用户设置页面
   {
     path: '/setting',
+    meta: {
+      requiresAuth: true
+    },
     component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Setting')
   },
   // 用户信息修改页面
@@ -55,9 +58,12 @@ const routes = [
   // 商品支付页
   {
     path: '/pay/:id',
+    meta: {
+      requiresAuth: true
+    },
     component: () => import(/* webpackChunkName: "pay" */ '@/components/pay/Index')
   },
-  // 登录
+  // 注册
   {
     path: '/register',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/Register')
@@ -74,6 +80,20 @@ const router = new VueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes
+})
+
+// 路由导航
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!token) {
+      next('/login')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

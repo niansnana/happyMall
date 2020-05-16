@@ -19,6 +19,8 @@
         right-icon="question-o"
         @click-right-icon="$toast('用户名大于两位')"
       />
+      <!-- isExistFn -->
+      <!-- <van-notice-bar :scrollable="false">用户名已存在</van-notice-bar> -->
       <van-field
         v-model="userInfo.password"
         clearable

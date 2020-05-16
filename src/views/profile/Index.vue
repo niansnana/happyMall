@@ -6,10 +6,10 @@
     <div class="userInfo" v-show="token">
       <div class="inner">
         <div class="portrait" @click="toSetting">
-          <img src="https://pic2.zhimg.com/80/v2-3f71bc3a7c067ccca02edeadc0059936_720w.jpg" />
+          <img :src="this.userData.avatar" />
         </div>
         <div class="nickname">
-          <span>养你致富hhh</span>
+          <span>{{this.userData.nickName}}</span>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
 
 <script>
 import ColorNav from 'components/navBar/ColorNav'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   components: { ColorNav },
   data () {
@@ -52,22 +52,36 @@ export default {
         { name: '复制链接', icon: 'link' },
         { name: '分享海报', icon: 'poster' },
         { name: '二维码', icon: 'qrcode' }
-      ]
+      ],
+      userData: {}
     }
   },
   created () {
     this.setBottomNav(true)
+    this.getCurUserInfo(this.userName)
   },
   computed: {
     ...mapGetters([
+      'userName',
       'token'
     ])
   },
   methods: {
     ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV',
-      setToken: 'SET_TOKEN'
+      setBottomNav: 'SET_BOTTOM_NAV'
     }),
+    ...mapActions([
+      'getUserNameAndToken'
+    ]),
+    getCurUserInfo (userName) {
+      if (this.token) {
+        this.$api.detailFn({ userName }).then(res => {
+          if (res.code === 200 && res.data) {
+            this.userData = res.data
+          }
+        })
+      }
+    },
     onSelect (option) {
       this.$toast(option.name)
       this.showShare = false
@@ -79,12 +93,6 @@ export default {
       })
       this.setBottomNav(false)
     },
-    // toLogin () {
-    //   this.$router.push({
-    //     path: '/login'
-    //   })
-    //   this.setBottomNav(false)
-    // },
     goLogin () {
       this.$router.push({
         path: '/login'
@@ -92,11 +100,19 @@ export default {
       this.setBottomNav(false)
     },
     logout () {
-      this.setToken()
-      this.$router.push({
-        path: '/login'
+      this.$api.logoutFn().then(res => {
+        localStorage.clear()
+        this.getUserNameAndToken({
+          userName: '',
+          token: ''
+        })
+        if (res.data.code === 200) {
+          this.$router.push({
+            path: '/login'
+          })
+          this.setBottomNav(false)
+        }
       })
-      this.setBottomNav(false)
     }
   }
 }

@@ -24,6 +24,9 @@ const mutations = {
   },
   [types.SET_TOKEN] (state, key) {
     state.token = key
+  },
+  [types.SET_USER_NAME] (state, data) {
+    state.userName = data
   }
 }
 

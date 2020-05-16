@@ -5,9 +5,9 @@
       <slot>设置</slot>
     </NavBar>
     <van-card
-      desc="hg_sdfddfd"
-      title="养你致富hhh"
-      thumb="https://pic2.zhimg.com/80/v2-3f71bc3a7c067ccca02edeadc0059936_720w.jpg"
+      :desc="this.userData.userName"
+      :title="this.userData.nickName"
+      :thumb="this.userData.avatar"
       @click="toEditInfo"
     >
       <template #tags>
@@ -25,14 +25,31 @@
 
 <script>
 import NavBar from '@/components/navBar/NavBar'
+import { mapGetters } from 'vuex'
 export default {
   components: { NavBar },
   data () {
-    return {}
+    return {
+      userData: {}
+    }
+  },
+  created () {
+    this.getCurUserInfo(this.userName)
+  },
+  computed: {
+    ...mapGetters([
+      'userName'
+    ])
   },
   methods: {
+    getCurUserInfo (userName) {
+      this.$api.detailFn({ userName }).then(res => {
+        if (res.code === 200 && res.data) {
+          this.userData = res.data
+        }
+      })
+    },
     toEditInfo () {
-      // this.$router.replace('/editinfo')
       this.$router.push({
         path: '/editinfo'
       })

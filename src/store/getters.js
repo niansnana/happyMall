@@ -10,3 +10,4 @@ export const totalNum = state => state.totalNum
 export const isChecked = state => state.isChecked
 export const shoppingCart = state => state.shoppingCart
 export const token = state => state.token
+export const userName = state => state.userName

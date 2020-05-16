@@ -48,7 +48,7 @@
 
 <script>
 import Nav from 'components/navBar/Nav'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 export default {
   components: { Nav },
   data () {
@@ -74,17 +74,20 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV',
-      setToken: 'SET_TOKEN'
+      setBottomNav: 'SET_BOTTOM_NAV'
     }),
+    ...mapActions([
+      'getUserNameAndToken'
+    ]),
     login () {
       this.$api.loginFn(this.userInfo).then(res => {
         if (res.data.code === 200) {
-          const token = new Date().getTime()
-          this.setToken(token)
-          this.$router.push({
-            path: '/home'
+          this.getUserNameAndToken({
+            userName: res.data.data,
+            token: res.data.token
           })
+          localStorage.setItem('token', res.data.token)
+          this.$router.go(-1)
           this.setBottomNav(true)
         } else {
           this.$toast.fail('用户名或密码错误')

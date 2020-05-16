@@ -6,11 +6,12 @@
 */
 const state = {
   bottomNav: true, // 底部导航（默认显示）
-  totalNum: 0, // 购物车购买的总数
-  isChecked: false, // 购物车商品默认未选中
-  totalPrice: 0, // 购物车最终所需要支付的金额,
-  shoppingCart: [], // 存储的购物车数组,
-  token: '' // 登录验证
+  totalNum: 0, // 购物车购买的总数 （存在安全性问题
+  isChecked: false, // 购物车商品默认未选中 （存在安全性问题
+  totalPrice: 0, // 购物车最终所需要支付的金额（存在安全性问题
+  shoppingCart: [], // 当前用户存储的购物车数组（存在安全性问题，等待后续接口，再来实现该功能）
+  token: '', // token 令牌
+  userName: '' // 当前用户名
 }
 
 export default state

@@ -1,62 +1,119 @@
 <template>
   <div>
-    <!-- 头部 -->
     <NavBar>
       <slot>编辑资料</slot>
     </NavBar>
-    <div class="portrait">
-      <div>
-        <img src="https://pic2.zhimg.com/80/v2-3f71bc3a7c067ccca02edeadc0059936_720w.jpg" />
+    <van-cell class="align_cell" title="头像" is-link>
+      <template #default>
+        <van-uploader>
+          <van-image
+            width="60"
+            round
+            fit="contain"
+            :src="userData.avatar"
+            @click="changeCurUserAvatar"
+          />
+        </van-uploader>
+      </template>
+    </van-cell>
+    <van-cell title="会员名" :value="userData.userName" @click="showTipAtUserName" />
+    <van-cell title="UID" :value="userData.id" />
+    <van-cell title="昵称" is-link :value="userData.nickName" @click="showChangeNickName = true" />
+    <van-cell title="性别" is-link :value="getGender" />
+    <van-cell title="注册时间" :value="userData.createdAt | dataFilter(userData.createdAt)" />
+    <van-divider :style="{ color: '#999', borderColor: '#c8c8c8', padding: '0 16px' }">退出登录移至设置里啦</van-divider>
+    <!-- 修改昵称 -->
+    <van-popup id="changeNickNameID" v-model="showChangeNickName" position="right">
+      <van-nav-bar left-text="返回" left-arrow @click-left="showChangeNickName = false">
+        <template #title>
+          <slot>修改昵称</slot>
+        </template>
+      </van-nav-bar>
+      <div class="cnn_content">
+        <van-field v-model="nickName" :placeholder="userData.nickName" clearable />
+        <span>注意：一旦修改，则默认承认管理员很酷</span>
+        <van-button block @click="changeNickName(nickName, userData.userName)">保存</van-button>
       </div>
-    </div>
-    <van-form>
-      <van-field name="用户名" label="用户名" placeholder="hg_sdfddfd" />
-      <van-field name="昵称" label="昵称" placeholder="养你致富hhh" />
-      <van-field name="性别" label="性别" :value="value" placeholder="男" @click="showPicker = true" />
-      <van-field name="出生日期" label="出生日期" placeholder="2000-9-18" />
-      <van-field name="手机号码" label="手机号码" placeholder="15256832969" />
-    </van-form>
-    <van-popup v-model="showPicker" position="bottom">
-      <van-picker
-        show-toolbar
-        :columns="columns"
-        @confirm="onConfirm"
-        @cancel="showPicker = false"
-      />
     </van-popup>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/navBar/NavBar'
+import { mapGetters } from 'vuex'
 export default {
   components: { NavBar },
   data () {
     return {
-      value: '',
-      columns: ['男', '女'],
-      showPicker: false
+      userData: {},
+      showChangeNickName: false,
+      nickName: ''
     }
   },
+  computed: {
+    ...mapGetters([
+      'userName'
+    ]),
+    getGender () {
+      return this.userData.gender === 3 ? '保密' : this.userData.gender === 1 ? '男' : '女'
+    }
+  },
+  created () {
+    this.getUserInfo(this.userName)
+  },
   methods: {
-    onConfirm (value) {
-      this.value = value
-      this.showPicker = false
+    getUserInfo (userName) {
+      this.$api.detailFn({ userName }).then(res => {
+        if (res.code === 200 && res.data) {
+          this.userData = res.data
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    changeCurUserAvatar () {
+      console.log('修改头像')
+    },
+    showTipAtUserName () {
+      this.$toast('用户名作为登录名，不可以修改哦~')
+    },
+    changeNickName (nickName, userName) {
+      this.$api.changeCurUserInfoFn({ nickName, userName }).then(res => {
+        if (res.code === 200) {
+          this.$toast.success('修改成功')
+          this.getUserInfo(userName)
+        }
+      })
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.portrait
-  height 100px
-  margin-top 10px
-  div
-    width 88px
-    height 88px
-    margin 0 auto
-    img
-      width 100%
-      height 100%
-      border-radius 50%
+.align_cell
+  display flex
+  align-items center
+#changeNickNameID
+  width 100%
+  height 100%
+  background-color #f5f5f5
+  >>> .van-nav-bar
+    background-color #b1daba
+    .van-nav-bar__left i, .van-nav-bar__left span, .van-nav-bar__title
+      color #fff
+  .cnn_content
+    padding 15px
+    box-sizing border-box
+    .van-field
+      border-radius 5px
+    span
+      color #999
+      display block
+      margin 10px 0px
+    .van-button
+      background-color #ff5001
+      border-radius 5px
+      cursor pointer
+      >>> span
+        color #fff
 </style>
