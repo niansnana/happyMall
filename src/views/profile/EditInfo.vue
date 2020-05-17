@@ -3,25 +3,27 @@
     <NavBar>
       <slot>编辑资料</slot>
     </NavBar>
-    <van-cell class="align_cell" title="头像" is-link>
-      <template #default>
-        <van-uploader>
-          <van-image
-            width="60"
-            round
-            fit="contain"
-            :src="userData.avatar"
-            @click="changeCurUserAvatar"
-          />
-        </van-uploader>
-      </template>
-    </van-cell>
-    <van-cell title="会员名" :value="userData.userName" @click="showTipAtUserName" />
-    <van-cell title="UID" :value="userData.id" />
-    <van-cell title="昵称" is-link :value="userData.nickName" @click="showChangeNickName = true" />
-    <van-cell title="性别" is-link :value="getGender" />
-    <van-cell title="注册时间" :value="userData.createdAt | dataFilter(userData.createdAt)" />
-    <van-divider :style="{ color: '#999', borderColor: '#c8c8c8', padding: '0 16px' }">退出登录移至设置里啦</van-divider>
+    <div class="showUserInfo" v-show="Object.keys(this.userData).length">
+      <van-cell class="align_cell" title="头像" is-link>
+        <template #default>
+          <van-uploader>
+            <van-image
+              width="60"
+              round
+              fit="contain"
+              :src="userData.avatar"
+              @click="changeCurUserAvatar"
+            />
+          </van-uploader>
+        </template>
+      </van-cell>
+      <van-cell title="会员名" :value="userData.userName" @click="showTipAtUserName" />
+      <van-cell title="UID" :value="userData.id" />
+      <van-cell title="昵称" is-link :value="userData.nickName" @click="showChangeNickName = true" />
+      <van-cell title="性别" is-link :value="getGender" @click="showPicker = true" />
+      <van-cell title="注册时间" :value="userData.createdAt | dataFilter(userData.createdAt)" />
+      <van-divider :style="{ color: '#999', borderColor: '#c8c8c8', padding: '0 16px' }">退出登录移至设置里啦</van-divider>
+    </div>
     <!-- 修改昵称 -->
     <van-popup id="changeNickNameID" v-model="showChangeNickName" position="right">
       <van-nav-bar left-text="返回" left-arrow @click-left="showChangeNickName = false">
@@ -35,19 +37,36 @@
         <van-button block @click="changeNickName(nickName, userData.userName)">保存</van-button>
       </div>
     </van-popup>
+    <!-- 修改性别 -->
+    <van-popup v-model="showPicker" round position="bottom">
+      <van-picker
+        show-toolbar
+        :columns="columns"
+        @cancel="showPicker = false"
+        @confirm="onConfirm"
+      />
+    </van-popup>
+    <Loading v-show="!Object.keys(this.userData).length" />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/navBar/NavBar'
+import Loading from 'components/loading/Loading'
 import { mapGetters } from 'vuex'
 export default {
-  components: { NavBar },
+  components: { NavBar, Loading },
   data () {
     return {
       userData: {},
       showChangeNickName: false,
-      nickName: ''
+      nickName: '',
+      showPicker: false,
+      columns: [
+        { key: 1, text: '男' },
+        { key: 2, text: '女' },
+        { key: 3, text: '保密' }
+      ]
     }
   },
   computed: {
@@ -55,7 +74,7 @@ export default {
       'userName'
     ]),
     getGender () {
-      return this.userData.gender === 3 ? '保密' : this.userData.gender === 1 ? '男' : '女'
+      return parseInt(this.userData.gender) === 3 ? '保密' : parseInt(this.userData.gender) === 1 ? '男' : '女'
     }
   },
   created () {
@@ -82,8 +101,23 @@ export default {
         if (res.code === 200) {
           this.$toast.success('修改成功')
           this.getUserInfo(userName)
+          setTimeout(() => {
+            this.$router.go(-1)
+          }, 500)
         }
       })
+    },
+    onConfirm (value, index) {
+      const gender = value.key
+      // const curText = value.text
+      const userName = this.userData.userName
+      this.$api.changeCurUserGenderFn({ gender, userName }).then(res => {
+        if (res.code === 200) {
+          this.$toast.success('修改成功')
+          this.getUserInfo(userName)
+        }
+      })
+      this.showPicker = false
     }
   }
 }

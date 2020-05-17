@@ -34,14 +34,16 @@
     <van-cell title="分享给好友" @click="showShare = true" is-link />
     <van-share-sheet v-model="showShare" title="立即分享给好友" :options="options" @select="onSelect" />
     <van-cell title="退出登录" v-show="token" is-link @click="logout" />
+    <Loading v-show="!Object.keys(this.userData).length && this.token" />
   </div>
 </template>
 
 <script>
 import ColorNav from 'components/navBar/ColorNav'
+import Loading from 'components/loading/Loading'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
-  components: { ColorNav },
+  components: { ColorNav, Loading },
   data () {
     return {
       active: -1,
@@ -101,12 +103,12 @@ export default {
     },
     logout () {
       this.$api.logoutFn().then(res => {
-        localStorage.clear()
-        this.getUserNameAndToken({
-          userName: '',
-          token: ''
-        })
         if (res.data.code === 200) {
+          localStorage.removeItem('token')
+          this.getUserNameAndToken({
+            userName: '',
+            token: ''
+          })
           this.$router.push({
             path: '/login'
           })
@@ -130,7 +132,7 @@ export default {
     margin-bottom 15px
 .userInfo
   text-align center
-  background-image url('http://ku.90sjimg.com/back_pic/05/03/08/9359565bf290660.jpg%21/watermark/text/OTDorr7orqE=/font/simkai/align/southeast/opacity/20/size/50') // ku.90sjimg.com/back_pic/05/03/08/9359565bf290660.jpg%21/watermark/text/OTDorr7orqE=/font/simkai/align/southeast/opacity/20/size/50)
+  background-image url('http://ku.90sjimg.com/back_pic/05/03/08/9359565bf290660.jpg%21/watermark/text/OTDorr7orqE=/font/simkai/align/southeast/opacity/20/size/50')
   background-size 334%
   position relative
   height 210px

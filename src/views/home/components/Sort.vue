@@ -11,7 +11,7 @@
       <van-image src="https://img.alicdn.com/tfs/TB1V2eQrKSSBuNjy0FlXXbBpVXa-966-114.png" />
     </div>
     <!-- 分类展示商品 -->
-    <div id="sort">
+    <div id="sort" v-show="this.sortsData.length">
       <van-tabs v-model="active">
         <van-tab v-for="(sort, index) in sortsData" :key="index">
           <template #title>
@@ -31,12 +31,15 @@
         </van-tab>
       </van-tabs>
     </div>
+    <Loading v-show="!this.sortsData.length" />
   </div>
 </template>
 
 <script>
+import Loading from 'components/loading/Loading'
 import { mapMutations } from 'vuex'
 export default {
+  components: { Loading },
   data () {
     return {
       active: '',

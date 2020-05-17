@@ -86,6 +86,7 @@ export default {
             userName: res.data.data,
             token: res.data.token
           })
+          this.$toast.success('登录成功')
           localStorage.setItem('token', res.data.token)
           this.$router.go(-1)
           this.setBottomNav(true)

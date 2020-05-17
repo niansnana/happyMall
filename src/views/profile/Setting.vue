@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- 头部 -->
     <NavBar>
       <slot>设置</slot>
     </NavBar>
@@ -20,14 +19,16 @@
     <van-cell title="清除缓存" is-link />
     <van-cell title="通用" is-link />
     <van-cell title="问题反馈" is-link />
+    <Loading v-show="!Object.keys(this.userData).length" />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/navBar/NavBar'
+import Loading from 'components/loading/Loading'
 import { mapGetters } from 'vuex'
 export default {
-  components: { NavBar },
+  components: { NavBar, Loading },
   data () {
     return {
       userData: {}

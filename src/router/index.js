@@ -27,11 +27,6 @@ const routes = [
     path: '/profile',
     component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Index')
   },
-  // 商城用户页面
-  {
-    path: '/profile',
-    component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Index')
-  },
   // 用户设置页面
   {
     path: '/setting',

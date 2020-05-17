@@ -18,9 +18,9 @@
         left-icon="contact"
         right-icon="question-o"
         @click-right-icon="$toast('用户名大于两位')"
+        @input="userNameIsExist(userInfo.userName)"
       />
-      <!-- isExistFn -->
-      <!-- <van-notice-bar :scrollable="false">用户名已存在</van-notice-bar> -->
+      <van-notice-bar :scrollable="false" v-show="showIsExist">用户名已存在</van-notice-bar>
       <van-field
         v-model="userInfo.password"
         clearable
@@ -66,7 +66,8 @@ export default {
         phone: ''
       },
       passwordType: 'password',
-      isShowPass: false
+      isShowPass: false,
+      showIsExist: false
     }
   },
   computed: {
@@ -102,6 +103,16 @@ export default {
         }
       }).catch((err) => {
         console.log(err)
+      })
+    },
+    userNameIsExist (userName) {
+      this.$api.isExistFn({ userName }).then(res => {
+        if (res.data.code === 200) {
+          this.showIsExist = !this.showIsExist
+        }
+        if (userName === '') {
+          this.showIsExist = false
+        }
       })
     }
   }

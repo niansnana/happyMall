@@ -1,6 +1,6 @@
 /**
 * @author niansnana
-* @Description 配置vue，mock模拟数据
+* @Description 配置vue
 * @Start_Writing_Date 2020-05-10 13:36:50
 * @Last_Modified_Date 2020-05-10 13:36:50
 */
@@ -11,7 +11,7 @@ function resolve (dir) {
 }
 
 module.exports = {
-  // 打包相对路径
+  // 打包路径
   publicPath: '/',
   // 放置静态资源目录
   assetsDir: 'static',

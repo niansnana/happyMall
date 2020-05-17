@@ -14,5 +14,5 @@ export const changeTotalPrice = function ({ commit }, { num, isChecked, price })
 
 export const getUserNameAndToken = function ({ commit }, { userName, token }) {
   commit(types.SET_USER_NAME, userName)
-  commit(types.SET_TOKEN, userName)
+  commit(types.SET_TOKEN, token)
 }

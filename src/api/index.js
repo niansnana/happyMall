@@ -67,8 +67,8 @@ export default {
   registerFn (params) {
     return post(register, params)
   },
-  isExistFn () {
-    return post(isExist)
+  isExistFn (userName) {
+    return post(isExist, userName)
   },
   /**
    * 登录验证
@@ -84,6 +84,9 @@ export default {
   // 修改用户信息
   changeCurUserInfoFn (userName) {
     return patch(changeCurUserInfo, userName)
+  },
+  changeCurUserGenderFn (gender) {
+    return patch(changeCurUserInfo, gender)
   },
   // 退出登录
   logoutFn () {
