@@ -55,7 +55,7 @@
 #### 后端
 
 - `vue-axios`：用来请求后端 API 音乐数据
-- `happyMallApi`：nodejs编写的后台接口（还在写着呢）
+- `happyMallApi`：nodejs编写的[后台接口](https://github.com/niansnana/didigoAPI)（还在写着呢）
 
 #### 其他工具
 
@@ -98,9 +98,9 @@
 +-- commponents // 公共组件
     +-- bottomNav // 公共底部导航
     +-- navBar // 公共Header
-		+-- ColorNav // 渐隐Header
-		+-- Nav // 一三式Header
-		+-- NavBar // 一二式Header
+	+-- ColorNav // 渐隐Header
+	+-- Nav // 一三式Header
+	+-- NavBar // 一二式Header
     +-- notLogged // 公共未登录状态
     +-- Pay // 通用支付页面
 	+-- productDetail // 通用商品详情页面
