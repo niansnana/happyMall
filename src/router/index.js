@@ -29,7 +29,7 @@ const routes = [
   },
   // 用户设置页面
   {
-    path: '/setting',
+    path: '/user/setting',
     meta: {
       requiresAuth: true
     },
@@ -37,22 +37,28 @@ const routes = [
   },
   // 用户信息修改页面
   {
-    path: '/editinfo',
+    path: '/user/editinfo',
+    meta: {
+      requiresAuth: true
+    },
     component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/EditInfo')
   },
   // 用户收货地址页面
   {
-    path: '/address',
+    path: '/user/address',
+    meta: {
+      requiresAuth: true
+    },
     component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/AddressList')
   },
   // 商品详情页
   {
-    path: '/detail/:id',
+    path: '/goods/detail/:id',
     component: () => import(/* webpackChunkName: "pay" */ '@/components/productDetail/Index')
   },
   // 商品支付页
   {
-    path: '/pay/:id',
+    path: '/goods/pay/:id',
     meta: {
       requiresAuth: true
     },

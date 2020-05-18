@@ -184,7 +184,7 @@ export default {
     // },
     getDetail (id) {
       this.$router.push({
-        path: `/detail/${id}`
+        path: `/goods/detail/${id}`
       })
       this.setBottomNav(false)
     }

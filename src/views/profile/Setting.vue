@@ -13,7 +13,7 @@
         <van-tag plain type="danger">编辑</van-tag>
       </template>
     </van-card>
-    <van-cell title="我的收货地址" is-link to="/address" />
+    <van-cell title="我的收货地址" is-link to="/user/address" />
     <van-cell title="账号与安全" is-link />
     <van-cell title="支付设置" is-link />
     <van-cell title="清除缓存" is-link />
@@ -52,7 +52,7 @@ export default {
     },
     toEditInfo () {
       this.$router.push({
-        path: '/editinfo'
+        path: '/user/editinfo'
       })
     }
   }

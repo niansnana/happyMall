@@ -134,6 +134,8 @@ export default {
       border-radius 15px 15px 0px 0px
     .van-swipe-cell
       border-radius 0px 0px 15px 15px
+      >>> .van-swipe-cell__wrapper, >>> .van-cell.van-field
+        border-radius 0px 0px 15px 15px
       .get
         width 100%
         display flex

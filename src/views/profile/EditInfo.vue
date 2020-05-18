@@ -102,7 +102,7 @@ export default {
           this.$toast.success('修改成功')
           this.getUserInfo(userName)
           setTimeout(() => {
-            this.$router.go(-1)
+            this.showChangeNickName = !this.showChangeNickName
           }, 500)
         }
       })

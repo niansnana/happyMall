@@ -91,7 +91,7 @@ export default {
     toSetting () {
       // this.$router.replace('/setting')
       this.$router.push({
-        path: '/setting'
+        path: '/user/setting'
       })
       this.setBottomNav(false)
     },

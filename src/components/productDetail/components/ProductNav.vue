@@ -28,7 +28,7 @@ export default {
     },
     onBuy () {
       this.$router.push({
-        path: `/pay/${this.$route.params.id}`
+        path: `/goods/pay/${this.$route.params.id}`
       })
     }
   }
