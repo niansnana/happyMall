@@ -5,7 +5,7 @@
 -->
 <template>
   <div id="loading">
-    <van-loading size="24px" vertical>加载中...</van-loading>
+    <van-loading size="24px" vertical color="#ff6200">加载中...</van-loading>
   </div>
 </template>
 
@@ -15,4 +15,6 @@
   top 50%
   left 50%
   transform translate(-50%, -100%)
+  >>> span
+    color #ff6200
 </style>

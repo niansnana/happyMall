@@ -7,13 +7,5 @@
 <template>
   <div id="app">
     <router-view />
-    <bottomNav />
   </div>
 </template>
-
-<script>
-import bottomNav from '@/components/bottomNav/Index'
-export default {
-  components: { bottomNav }
-}
-</script>

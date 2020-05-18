@@ -15,14 +15,9 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 export default {
   methods: {
-    ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
-    }),
     backPre () {
-      this.setBottomNav(true)
       this.$router.go(-1)
     }
   }

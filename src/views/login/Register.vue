@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV',
       setToken: 'SET_TOKEN'
     }),
     showPass () {

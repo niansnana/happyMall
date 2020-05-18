@@ -7,8 +7,7 @@
 <template>
   <div class="fix">
     <van-tabbar
-      v-show="bottomNav"
-      v-model="active"
+      v-model="routerLinkActive"
       @change="onChange"
       active-color="#ff6200"
       inactive-color="#000"
@@ -26,11 +25,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      active: 0,
       navData: [
         { id: 0, title: '首页', icon: 'home-o', badge: '', path: '/home' },
         { id: 1, title: '消息', icon: 'chat-o', badge: '10', path: '/news' },
@@ -41,12 +39,15 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'bottomNav'
+      'routerLinkActive'
     ])
   },
   methods: {
+    ...mapMutations({
+      setRouterLinkActive: 'SET_ROUTER_LINK_ACTIVE'
+    }),
     onChange (index) {
-      this.active = index
+      this.setRouterLinkActive(index)
     }
   }
 }

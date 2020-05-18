@@ -41,7 +41,7 @@
 <script>
 import ColorNav from 'components/navBar/ColorNav'
 import Loading from 'components/loading/Loading'
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   components: { ColorNav, Loading },
   data () {
@@ -59,7 +59,6 @@ export default {
     }
   },
   created () {
-    this.setBottomNav(true)
     this.getCurUserInfo(this.userName)
   },
   computed: {
@@ -69,9 +68,6 @@ export default {
     ])
   },
   methods: {
-    ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
-    }),
     ...mapActions([
       'getUserNameAndToken'
     ]),
@@ -89,17 +85,14 @@ export default {
       this.showShare = false
     },
     toSetting () {
-      // this.$router.replace('/setting')
       this.$router.push({
         path: '/user/setting'
       })
-      this.setBottomNav(false)
     },
     goLogin () {
       this.$router.push({
         path: '/login'
       })
-      this.setBottomNav(false)
     },
     logout () {
       this.$api.logoutFn().then(res => {
@@ -112,7 +105,6 @@ export default {
           this.$router.push({
             path: '/login'
           })
-          this.setBottomNav(false)
         }
       })
     }

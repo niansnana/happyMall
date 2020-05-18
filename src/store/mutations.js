@@ -7,8 +7,8 @@
 import * as types from './mutations-types'
 
 const mutations = {
-  [types.SET_BOTTOM_NAV] (state, flag) {
-    state.bottomNav = flag
+  [types.SET_ROUTER_LINK_ACTIVE] (state, num) {
+    state.routerLinkActive = num
   },
   [types.SET_TOTAL_PRICE] (state, total) {
     state.totalPrice = total

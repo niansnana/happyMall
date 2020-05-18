@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
@@ -31,20 +31,15 @@ export default {
     ])
   },
   methods: {
-    ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
-    }),
     login () {
       this.$router.push({
         path: '/login'
       })
-      this.setBottomNav(false)
     },
     register () {
       this.$router.push({
         path: '/register'
       })
-      this.setBottomNav(false)
     }
   }
 }

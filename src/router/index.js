@@ -7,25 +7,32 @@ const routes = [
     path: '/',
     redirect: '/home'
   },
-  // 商城首页
+  // 导航路由
   {
     path: '/home',
-    component: () => import(/* webpackChunkName: "home" */ '@/views/home/Index')
-  },
-  // 商城消息页
-  {
-    path: '/news',
-    component: () => import(/* webpackChunkName: "news" */ '@/views/news/Index')
-  },
-  // 商城购物车页
-  {
-    path: '/cart',
-    component: () => import(/* webpackChunkName: "cart" */ '@/views/cart/Index')
-  },
-  // 商城用户页面
-  {
-    path: '/profile',
-    component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Index')
+    component: () => import(/* webpackChunkName: "home" */ '@/views/main/Index'),
+    children: [
+      // 商城首页
+      {
+        path: '/home',
+        component: () => import(/* webpackChunkName: "home" */ '@/views/home/Index')
+      },
+      // 商城消息页
+      {
+        path: '/news',
+        component: () => import(/* webpackChunkName: "news" */ '@/views/news/Index')
+      },
+      // 商城购物车页
+      {
+        path: '/cart',
+        component: () => import(/* webpackChunkName: "cart" */ '@/views/cart/Index')
+      },
+      // 商城用户页面
+      {
+        path: '/profile',
+        component: () => import(/* webpackChunkName: "profile" */ '@/views/profile/Index')
+      }
+    ]
   },
   // 用户设置页面
   {

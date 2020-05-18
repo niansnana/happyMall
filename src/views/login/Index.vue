@@ -48,7 +48,7 @@
 
 <script>
 import Nav from 'components/navBar/Nav'
-import { mapMutations, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   components: { Nav },
   data () {
@@ -61,9 +61,6 @@ export default {
       isShowPass: false
     }
   },
-  created () {
-    this.setBottomNav(false)
-  },
   computed: {
     isLogin () {
       return this.username === '' ? 'default' : 'danger'
@@ -73,9 +70,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
-    }),
     ...mapActions([
       'getUserNameAndToken'
     ]),
@@ -89,7 +83,6 @@ export default {
           this.$toast.success('登录成功')
           localStorage.setItem('token', res.data.token)
           this.$router.go(-1)
-          this.setBottomNav(true)
         } else {
           this.$toast.fail('用户名或密码错误')
         }
@@ -108,7 +101,6 @@ export default {
       this.$router.push({
         path: '/register'
       })
-      this.setBottomNav(false)
     }
   }
 }

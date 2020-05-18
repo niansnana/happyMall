@@ -37,7 +37,6 @@
 
 <script>
 import Loading from 'components/loading/Loading'
-import { mapMutations } from 'vuex'
 export default {
   components: { Loading },
   data () {
@@ -171,9 +170,6 @@ export default {
     // this.getGoodsData()
   },
   methods: {
-    ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
-    }),
     // getGoodsData () {
     //   // 获取商品数据
     //   this.$api.get('/api/goods').then(res => {
@@ -186,7 +182,6 @@ export default {
       this.$router.push({
         path: `/goods/detail/${id}`
       })
-      this.setBottomNav(false)
     }
   }
 }

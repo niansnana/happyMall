@@ -5,7 +5,7 @@
 * @Last_Modified_Date 2020-05-10 10:04:16
 */
 const state = {
-  bottomNav: true, // 底部导航（默认显示）
+  routerLinkActive: null,
   totalNum: 0, // 购物车购买的总数 （存在安全性问题
   isChecked: false, // 购物车商品默认未选中 （存在安全性问题
   totalPrice: 0, // 购物车最终所需要支付的金额（存在安全性问题

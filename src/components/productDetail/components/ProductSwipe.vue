@@ -23,7 +23,6 @@
   </div>
 </template>
 <script>
-import { mapMutations } from 'vuex'
 export default {
   data () {
     return {
@@ -39,14 +38,10 @@ export default {
     this.id = this.$route.params.id
   },
   methods: {
-    ...mapMutations({
-      setBottomNav: 'SET_BOTTOM_NAV'
-    }),
     backHome () {
       this.$router.push({
         path: '/home'
       })
-      this.setBottomNav(true)
     },
     onChange (index) {
       this.current = index
