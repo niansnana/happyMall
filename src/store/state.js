@@ -5,7 +5,7 @@
 * @Last_Modified_Date 2020-05-10 10:04:16
 */
 const state = {
-  routerLinkActive: null,
+  routerLinkActive: 0, // 默认导航激活状态序列
   totalNum: 0, // 购物车购买的总数 （存在安全性问题
   isChecked: false, // 购物车商品默认未选中 （存在安全性问题
   totalPrice: 0, // 购物车最终所需要支付的金额（存在安全性问题

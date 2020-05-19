@@ -11,7 +11,8 @@ import {
   changeCurUserInfo,
   detail,
   logout,
-  isExist
+  isExist,
+  goodsList
 } from './config'
 
 import { get, post, patch } from './method'
@@ -58,38 +59,36 @@ axios.interceptors.response.use(
 )
 
 export default {
-  /**
-   * 新用户注册
-   * @param {String} userName 用户名
-   * @param {String} password 密码
-   * @param {String} phone 手机号
-   */
+  // 用户注册
   registerFn (params) {
     return post(register, params)
   },
+  // 用户名查重
   isExistFn (userName) {
     return post(isExist, userName)
   },
-  /**
-   * 登录验证
-   * @param {String} userName 用户名
-   * @param {String} password 密码
-   */
+  // 登录验证
   loginFn (params) {
     return post(login, params)
   },
+  // 用户详情
   detailFn (userName) {
     return get(detail, userName)
   },
-  // 修改用户信息
+  // 修改用户昵称
   changeCurUserInfoFn (userName) {
     return patch(changeCurUserInfo, userName)
   },
+  // 修改用户性别（存在冗余，待完善）
   changeCurUserGenderFn (gender) {
     return patch(changeCurUserInfo, gender)
   },
   // 退出登录
   logoutFn () {
     return post(logout)
+  },
+  // 商品数据
+  goodsListFn (keywords) {
+    return get(goodsList, keywords)
   }
 }

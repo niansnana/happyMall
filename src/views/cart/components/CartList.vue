@@ -1,17 +1,23 @@
 <!--
  * @author niansnana
  * @Description 购物车列表
+ * 卧槽，才发现Vant有全选的组件，mmp，这部分代码极有可能重构了
  * @Start_Writing_Date 2020-05-09 14:32:02
  * @Last_Modified_Date 2020-05-09 14:32:02
 -->
 <template>
   <div id="cartList">
-    <van-list v-for="(list, index) in listData" :key="index">
-      <van-cell class="topVanCell" :title="list.title" :value="list.value" />
+    <van-list v-for="(list, index) in collectCartData" :key="index">
+      <van-cell class="topVanCell" :title="list.store.title" value="领劵" />
       <van-swipe-cell>
         <div class="get">
-          <van-checkbox v-model="list.isChecked" :name="list.id" shape="square" />
-          <van-card :price="list.price" desc="描述信息" :title="list.goodsName" :thumb="list.thumb" />
+          <van-checkbox v-model="isChecked" :name="list.id" shape="square" />
+          <van-card
+            :price="list.price"
+            :desc="list.description"
+            :title="list.title"
+            :thumb="list.thumb"
+          />
         </div>
         <van-field name="stepper">
           <template #input>
@@ -24,13 +30,16 @@
         </template>
       </van-swipe-cell>
     </van-list>
+    <Loading v-show="!collectCartData.length" />
   </div>
 </template>
 
 <script>
 import bus from '@/utils/bus'
 import { mapActions } from 'vuex'
+import Loading from 'components/loading/Loading'
 export default {
+  components: { Loading },
   data () {
     return {
       listData: [
@@ -75,8 +84,11 @@ export default {
           isChecked: false
         }
       ],
+      isChecked: false,
       totalNum: 0,
-      totalPrice: 0
+      totalPrice: 0,
+      userId: 1,
+      collectCartData: []
     }
   },
   mounted () {
@@ -89,13 +101,10 @@ export default {
   watch: {
     listData: {
       handler (curval, oldval) {
-        // 计算总价
         this.totalNum = this.totalPrice = 0
         curval.forEach(item => {
           this.totalNum += item.num
           this.totalPrice += (item.num * item.price) * 100
-          // console.log('最后的订单数：', this.totalNum)
-          // console.log('最后的成交价：', this.totalPrice)
           if (item.isChecked === true) {
             this.changeTotalPrice({
               num: this.totalNum,
@@ -108,6 +117,9 @@ export default {
       deep: true
     }
   },
+  created () {
+    this.getCollectCart(this.userId)
+  },
   methods: {
     ...mapActions([
       'changeTotalPrice'
@@ -117,6 +129,13 @@ export default {
     },
     subNum (num) {
       num--
+    },
+    getCollectCart (collectCart) {
+      this.$api.goodsListFn({ collectCart }).then(res => {
+        if (res.code === 200) {
+          this.collectCartData = res.data
+        }
+      })
     }
   }
 }

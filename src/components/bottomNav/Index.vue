@@ -7,7 +7,7 @@
 <template>
   <div class="fix">
     <van-tabbar
-      v-model="routerLinkActive"
+      :value="routerLinkActive"
       @change="onChange"
       active-color="#ff6200"
       inactive-color="#000"

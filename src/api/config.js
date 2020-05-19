@@ -15,3 +15,5 @@ export const login = api + 'user/login' // 用户登录
 export const detail = api + 'user/detail' // 用户详情
 export const changeCurUserInfo = api + 'user/changeInfo' // 修改当前用户信息
 export const logout = api + 'user/logout' // 退出登录
+// 商品数据
+export const goodsList = api + 'goods/list' // 商品数据

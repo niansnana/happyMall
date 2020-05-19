@@ -13,7 +13,7 @@
           <van-image
             width="50px"
             height="50px"
-            src="https://img.alicdn.com/imgextra//21/bc/T1fl0mXaXvXXb1upjX.jpg_100x100q90_.webp"
+            src="https://img.alicdn.com/imgextra//21/bc/T1fl0mXaXvXXb1upjX.jpg"
           />
           <p class="pofletf">
             家道家具

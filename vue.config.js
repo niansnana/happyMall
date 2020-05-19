@@ -25,7 +25,7 @@ module.exports = {
       .set('components', resolve('src/components'))
       .set('plugin', resolve('src/plugin'))
       .set('utils', resolve('src/utils'))
-      .set('@views', resolve('src/views'))
+      .set('views', resolve('src/views'))
   },
   devServer: {
     host: 'localhost',

@@ -80,6 +80,11 @@ const routes = [
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/Index')
+  },
+  // 测试接口路由
+  {
+    path: '/test',
+    component: () => import(/* webpackChunkName: "login" */ '@/views/test/Index')
   }
 ]
 
