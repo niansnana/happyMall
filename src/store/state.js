@@ -6,12 +6,11 @@
 */
 const state = {
   routerLinkActive: 0, // 默认导航激活状态序列
-  totalNum: 0, // 购物车购买的总数 （存在安全性问题
-  isChecked: false, // 购物车商品默认未选中 （存在安全性问题
-  totalPrice: 0, // 购物车最终所需要支付的金额（存在安全性问题
-  shoppingCart: [], // 当前用户存储的购物车数组（存在安全性问题，等待后续接口，再来实现该功能）
+  totalNum: 0, // 购物车购买的总数
+  totalPrice: 0, // 购物车最终所需要支付的金额
+  curUserCartsNum: 0, // 当前用户的购物车数量
   token: '', // token 令牌
-  userName: '' // 当前用户名
+  userName: '' // 当前用户名,
 }
 
 export default state

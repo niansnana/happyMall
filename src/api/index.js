@@ -12,7 +12,9 @@ import {
   detail,
   logout,
   isExist,
-  goodsList
+  goodsList,
+  goodsDetail,
+  cartsAdd
 } from './config'
 
 import { get, post, patch } from './method'
@@ -90,5 +92,13 @@ export default {
   // 商品数据
   goodsListFn (keywords) {
     return get(goodsList, keywords)
+  },
+  // 商品数据
+  goodsDetailFn (id) {
+    return get(goodsDetail, id)
+  },
+  // 添加到购物车
+  cartsAddFn (collectCart) {
+    return patch(cartsAdd, collectCart)
   }
 }

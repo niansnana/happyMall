@@ -17,3 +17,5 @@ export const changeCurUserInfo = api + 'user/changeInfo' // 修改当前用户�
 export const logout = api + 'user/logout' // 退出登录
 // 商品数据
 export const goodsList = api + 'goods/list' // 商品数据
+export const goodsDetail = api + 'goods/detail' // 商品数据
+export const cartsAdd = api + 'goods/update' // 添加到购物车

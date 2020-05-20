@@ -7,9 +7,9 @@
 <template>
   <div class="goods-detail">
     <!-- 商品轮播 -->
-    <ProductSwipe />
+    <ProductSwipe :goodsDetail="goodsDetailData" />
     <!-- 商品信息 -->
-    <ProductInfo />
+    <ProductInfo :goodsDetail="goodsDetailData" />
     <!-- 商品评价 -->
     <ProductComment />
     <!-- 商品详情介绍 -->
@@ -29,7 +29,20 @@ export default {
   components: { ProductSwipe, ProductInfo, ProductComment, ProductDetail, ProductNav },
   data () {
     return {
-      showspecification: false
+      showspecification: false,
+      goodsDetailData: {}
+    }
+  },
+  created () {
+    this.getGoodsDetail(this.$route.params.id)
+  },
+  methods: {
+    getGoodsDetail (id) {
+      this.$api.goodsDetailFn({ id }).then(res => {
+        if (res.code === 200) {
+          this.goodsDetailData = res.data
+        }
+      })
     }
   }
 }

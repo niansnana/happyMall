@@ -7,7 +7,7 @@
 <template>
   <div class="fix">
     <van-submit-bar :price="totalPrice" button-text="提交订单" @submit="onSubmit">
-      <van-checkbox v-model="checked" @click="allChecked">全选</van-checkbox>
+      <van-checkbox v-model="checkedAll" @click="allChecked">全选</van-checkbox>
       <template #tip>
         你的收货地址不支持同城送,
         <span @click="onClickEditAddress">修改地址</span>
@@ -22,7 +22,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      checked: false
+      checkedAll: false
     }
   },
   computed: {
@@ -36,14 +36,13 @@ export default {
     ]),
     // 全选
     allChecked () {
-      if (this.checked === false) {
+      if (this.checkedAll === false) {
         this.changeTotalPrice({
           num: 0,
-          isChecked: this.checked,
           price: 0
         })
       }
-      bus.$emit('allChecked', this.checked)
+      bus.$emit('allChecked', this.checkedAll)
     },
     onSubmit () {
       this.$toast('不要催')

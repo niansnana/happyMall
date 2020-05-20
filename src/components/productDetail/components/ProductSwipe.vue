@@ -11,15 +11,14 @@
       <van-icon name="plus" size="20" />
     </div>
     <van-swipe @change="onChange">
-      <van-swipe-item v-for="(thum, index) in thumData" :key="index">
-        <img :src="thum.thum" />
+      <van-swipe-item v-for="(thumb, index) in thumbData" :key="index">
+        <img :src="thumb.thumb" />
       </van-swipe-item>
       <template #indicator>
-        <div class="custom-indicator">{{ current + 1 }}/{{thumData.length}}</div>
+        <div class="custom-indicator">{{ current + 1 }}/{{thumbData.length}}</div>
       </template>
     </van-swipe>
-    <!-- <p>此商品id：{{id}}</p> -->
-    <van-notice-bar :text="'此商品ID：' + id" left-icon="volume-o" />
+    <van-notice-bar text="广告位招聘，非诚勿扰" left-icon="volume-o" />
   </div>
 </template>
 <script>
@@ -28,9 +27,9 @@ export default {
     return {
       id: '',
       current: 0,
-      thumData: [
-        { id: '1', thum: 'https://img.alicdn.com/imgextra/i3/12844594/TB2GJ3RduOSBuNjy0FdXXbDnVXa_!!12844594.jpg' },
-        { id: '2', thum: 'https://img.alicdn.com/imgextra/i4/12844594/O1CN011jo5ypdzUfFzjG7_!!12844594.jpg' }
+      thumbData: [
+        { id: '1', thumb: 'https://img.alicdn.com/imgextra/i3/12844594/TB2GJ3RduOSBuNjy0FdXXbDnVXa_!!12844594.jpg' },
+        { id: '2', thumb: 'https://img.alicdn.com/imgextra/i4/12844594/O1CN011jo5ypdzUfFzjG7_!!12844594.jpg' }
       ]
     }
   },

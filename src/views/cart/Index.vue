@@ -9,12 +9,11 @@
     <!-- 背景色 -->
     <van-row type="flex" justify="space-between">
       <van-col span="6">
-        <p>购物车(2)</p>
-        <span>共2件宝贝</span>
+        <p>购物车({{curUserCartsNum || 0}})</p>
+        <span>共{{curUserCartsNum || 0}}件宝贝</span>
       </van-col>
       <van-col span="6">管理</van-col>
     </van-row>
-    <!-- <div class="header" :style="opacityStyle" v-show="showNav">购物车</div> -->
     <ColorNav>
       <slot>购物车</slot>
     </ColorNav>
@@ -34,9 +33,15 @@ import Index from 'components/notLogged/Index'
 import { mapGetters } from 'vuex'
 export default {
   components: { ColorNav, CartList, CartComit, Index },
+  data () {
+    return {
+      cartsNum: null
+    }
+  },
   computed: {
     ...mapGetters([
-      'token'
+      'token',
+      'curUserCartsNum'
     ])
   }
 }
@@ -46,7 +51,6 @@ export default {
 #cart-main
   width 100%
   height 100%
-  background-color #f2f2f2
   .van-row
     height 18vh
     color #fff

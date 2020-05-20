@@ -3,6 +3,7 @@
  * @Description 导航
  * @Start_Writing_Date 2020-05-08 17:47:54
  * @Last_Modified_Date 2020-05-08 17:47:54
+ * @BUG 数组里存放不了state，哭:(，不会又来改写这部分代码了吧。。。
 -->
 <template>
   <div class="fix">
@@ -39,7 +40,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'routerLinkActive'
+      'routerLinkActive',
+      'curUserCartsNum'
     ])
   },
   methods: {

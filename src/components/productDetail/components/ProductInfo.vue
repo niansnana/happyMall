@@ -9,18 +9,19 @@
     <!-- 信息 -->
     <div class="info">
       <p>
-        <span>￥</span>950-4160
+        <span>￥</span>
+        {{goodsDetail.price}}
       </p>
       <van-row class="info_title" type="flex" justify="space-between">
-        <van-col class="van-multi-ellipsis--l2">HR家道家具 休闲椅 摇摇椅 沙发躺椅 客厅单人沙发 全实木逍遥椅</van-col>
+        <van-col class="van-multi-ellipsis--l2">{{goodsDetail.title}}</van-col>
         <van-col>
           <van-icon name="share" />分享
         </van-col>
       </van-row>
       <van-row class="info_more" type="flex" justify="space-between">
         <van-col span="6">快递：免运费</van-col>
-        <van-col span="6" align="center">月销13</van-col>
-        <van-col span="6" align="right">浙江湖州</van-col>
+        <van-col span="6" align="center">月销{{goodsDetail.sales}}</van-col>
+        <van-col span="6" align="right">{{goodsDetail.address}}</van-col>
       </van-row>
     </div>
     <!-- 服务 -->
@@ -106,7 +107,9 @@
 
 <script>
 import bus from '@/utils/bus'
+import { mapGetters } from 'vuex'
 export default {
+  props: ['goodsDetail'],
   data () {
     return {
       showService: false, // 服务弹窗
@@ -221,10 +224,21 @@ export default {
       this.showspecification = value
     })
   },
+  computed: {
+    ...mapGetters([
+      'userName'
+    ])
+  },
   methods: {
     onPointClicked () {
-      this.$toast.success('添加成功！')
-      this.showspecification = false
+      const collectCart = this.userName
+      const id = this.goodsDetail.id
+      this.$api.cartsAddFn({ collectCart, id }).then(res => {
+        if (res.code === 200) {
+          this.$toast.success('添加成功！')
+          this.showspecification = false
+        }
+      })
     }
   }
 }

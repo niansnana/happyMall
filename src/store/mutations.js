@@ -16,11 +16,11 @@ const mutations = {
   [types.SET_TOTAL_NUM] (state, num) {
     state.totalNum = num
   },
-  [types.SET_CHECKED] (state, flag) {
-    state.isChecked = flag
-  },
   [types.SET_SHOPPING_CART] (state, paylod) {
     state.shoppingCart = paylod
+  },
+  [types.SET_CUR_USER_CARTS_NUM] (state, num) {
+    state.curUserCartsNum = num
   },
   [types.SET_TOKEN] (state, key) {
     state.token = key

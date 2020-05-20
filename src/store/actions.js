@@ -6,9 +6,8 @@
 */
 import * as types from './mutations-types'
 
-export const changeTotalPrice = function ({ commit }, { num, isChecked, price }) {
+export const changeTotalPrice = function ({ commit }, { num, price }) {
   commit(types.SET_TOTAL_NUM, num)
-  commit(types.SET_CHECKED, isChecked)
   commit(types.SET_TOTAL_PRICE, price)
 }
 
