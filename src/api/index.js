@@ -14,7 +14,8 @@ import {
   isExist,
   goodsList,
   goodsDetail,
-  cartsAdd
+  cartsAdd,
+  searchGoods
 } from './config'
 
 import { get, post, patch } from './method'
@@ -50,7 +51,7 @@ axios.interceptors.response.use(
       // 如果401或405则到登录页
       if (status === 401 || status === 405) {
         Toast({
-          message: '未知错误',
+          message: '请登录，Please！',
           duration: 1000,
           forbidClick: true
         })
@@ -100,5 +101,9 @@ export default {
   // 添加到购物车
   cartsAddFn (collectCart) {
     return patch(cartsAdd, collectCart)
+  },
+  // 添加到购物车
+  searchGoodsFn (keywords) {
+    return get(searchGoods, keywords)
   }
 }

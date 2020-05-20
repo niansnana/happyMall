@@ -71,6 +71,16 @@ const routes = [
     },
     component: () => import(/* webpackChunkName: "pay" */ '@/components/pay/Index')
   },
+  // 商品搜索页面
+  {
+    path: '/goods/search',
+    component: () => import(/* webpackChunkName: "search" */ '@/views/search/Index')
+  },
+  // 商品搜索页面
+  {
+    path: '/goods/search/:keywords',
+    component: () => import(/* webpackChunkName: "search" */ '@/views/search/Result')
+  },
   // 注册
   {
     path: '/register',

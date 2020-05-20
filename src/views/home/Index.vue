@@ -7,14 +7,14 @@
 <template>
   <div class="home-main">
     <!-- 搜索框组件 -->
-    <van-search v-model="value" placeholder="请输入搜索关键词" />
+    <van-search placeholder="请输入搜索关键词" @click="goGoodsSearch" />
     <!-- 轮播组件 -->
-    <Swipe/>
+    <Swipe />
     <!-- 导航分类 -->
-    <Menus/>
+    <Menus />
     <!-- 热门推荐 -->
     <!-- 分类商品 -->
-    <Sort/>
+    <Sort />
   </div>
 </template>
 
@@ -24,9 +24,11 @@ import Menus from './components/Menus'
 import Sort from './components/Sort'
 export default {
   components: { Swipe, Menus, Sort },
-  data () {
-    return {
-      value: ''
+  methods: {
+    goGoodsSearch () {
+      this.$router.push({
+        path: '/goods/search'
+      })
     }
   }
 }

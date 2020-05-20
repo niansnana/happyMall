@@ -237,6 +237,8 @@ export default {
         if (res.code === 200) {
           this.$toast.success('添加成功！')
           this.showspecification = false
+        } else {
+          this.$toast.fail('系统出现错误，请稍后再试！')
         }
       })
     }

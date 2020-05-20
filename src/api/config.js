@@ -19,3 +19,4 @@ export const logout = api + 'user/logout' // 退出登录
 export const goodsList = api + 'goods/list' // 商品数据
 export const goodsDetail = api + 'goods/detail' // 商品数据
 export const cartsAdd = api + 'goods/update' // 添加到购物车
+export const searchGoods = api + 'goods/search' // 商品搜索

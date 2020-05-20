@@ -5,7 +5,7 @@
  * @Last_Modified_Date 2020-05-11 09:53:00
 -->
 <template>
-  <div>
+  <div id="login-main">
     <Nav>
       <slot>帮助</slot>
     </Nav>
