@@ -12,6 +12,7 @@
           v-model="keywords"
           show-action
           clearable
+          autofocus
           placeholder="搜你喜欢，乐享商城"
           @search="onSearch(keywords)"
           @cancel="onCancel"
@@ -75,7 +76,9 @@ export default {
       })
     },
     onCancel () {
-      this.$router.go(-1)
+      this.$router.push({
+        path: '/home'
+      })
     }
   }
 }

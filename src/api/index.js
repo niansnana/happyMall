@@ -94,7 +94,7 @@ export default {
   goodsListFn (keywords) {
     return get(goodsList, keywords)
   },
-  // 商品数据
+  // 商品详情
   goodsDetailFn (id) {
     return get(goodsDetail, id)
   },
@@ -102,7 +102,7 @@ export default {
   cartsAddFn (collectCart) {
     return patch(cartsAdd, collectCart)
   },
-  // 添加到购物车
+  // 商品搜索
   searchGoodsFn (keywords) {
     return get(searchGoods, keywords)
   }

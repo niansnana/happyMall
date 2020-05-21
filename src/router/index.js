@@ -74,12 +74,12 @@ const routes = [
   // 商品搜索页面
   {
     path: '/goods/search',
-    component: () => import(/* webpackChunkName: "search" */ '@/views/search/Index')
+    component: () => import(/* webpackChunkName: "search" */ '@/components/search/Index')
   },
   // 商品搜索页面
   {
     path: '/goods/search/:keywords',
-    component: () => import(/* webpackChunkName: "search" */ '@/views/search/Result')
+    component: () => import(/* webpackChunkName: "search" */ '@/views/searchResult/Index')
   },
   // 注册
   {
