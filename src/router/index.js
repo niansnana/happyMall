@@ -71,6 +71,14 @@ const routes = [
     },
     component: () => import(/* webpackChunkName: "pay" */ '@/components/pay/Index')
   },
+  // 商品支付成功
+  {
+    path: '/goods/defray/success',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import(/* webpackChunkName: "pay" */ '@/components/project/Index')
+  },
   // 商品搜索页面
   {
     path: '/goods/search',
@@ -90,11 +98,6 @@ const routes = [
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/Index')
-  },
-  // 测试接口路由
-  {
-    path: '/test',
-    component: () => import(/* webpackChunkName: "login" */ '@/views/test/Index')
   }
 ]
 

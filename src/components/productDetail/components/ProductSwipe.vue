@@ -10,9 +10,20 @@
       <van-icon name="arrow-left" size="20" @click.native="backHome" />
       <van-icon name="plus" size="20" />
     </div>
-    <van-swipe @change="onChange">
+    <!-- <van-swipe @change="onChange">
       <van-swipe-item v-for="(thumb, index) in thumbData" :key="index">
         <img :src="thumb.thumb" />
+      </van-swipe-item>
+      <template #indicator>
+        <div class="custom-indicator">{{ current + 1 }}/{{thumbData.length}}</div>
+      </template>
+    </van-swipe>-->
+    <van-swipe @change="onChange">
+      <van-swipe-item>
+        <img :src="goodsDetail.thumb" />
+      </van-swipe-item>
+      <van-swipe-item>
+        <img src="https://img.alicdn.com/imgextra/i4/12844594/O1CN011jo5ypdzUfFzjG7_!!12844594.jpg" />
       </van-swipe-item>
       <template #indicator>
         <div class="custom-indicator">{{ current + 1 }}/{{thumbData.length}}</div>
@@ -23,6 +34,7 @@
 </template>
 <script>
 export default {
+  props: ['goodsDetail'],
   data () {
     return {
       id: '',

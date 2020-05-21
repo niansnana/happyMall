@@ -23,7 +23,12 @@ export default {
   components: { NavBar, Address, PayMent },
   methods: {
     onSubmit () {
-      this.$toast('loading')
+      this.$toast.success('提交成功，跳转支付页···')
+      setTimeout(() => {
+        this.$router.push({
+          path: '/goods/defray/success'
+        })
+      }, 2000)
     }
   }
 }

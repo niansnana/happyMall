@@ -45,7 +45,12 @@ export default {
       bus.$emit('allChecked', this.checkedAll)
     },
     onSubmit () {
-      this.$toast('不要催')
+      this.$toast.success('提交成功，跳转支付页···')
+      setTimeout(() => {
+        this.$router.push({
+          path: '/goods/defray/success'
+        })
+      }, 2000)
     },
     onClickEditAddress () {
       this.$toast('在写了在写了')
