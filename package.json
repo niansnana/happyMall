@@ -9,7 +9,7 @@
     "prod-build": "vue-cli-service build --mode production"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^3.6.4",
     "lib-flexible": "^0.3.2",
     "qs": "^6.9.4",
